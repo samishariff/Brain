@@ -13,8 +13,7 @@ Windows PC. See the actual app, including its meeting assistant, on the
 (macOS 26 or later, Apple silicon). The Mac app is a signed, notarized disk
 image; the installed app updates itself from the public release channel.
 
-**Downloads for the Windows preview are being prepared.** There is not yet a
-Windows installer or an automatic-update feed.
+**Brain for Windows preview 1.0.3.2 is available** from the [Brain website](https://samishariff.github.io/Brain/). Read the [preview notes](https://samishariff.github.io/Brain/release-notes.html) before installing. Physical microphones, live calls, device changes and sleep/wake behavior remain unverified for this preview.
 
 - [Mac setup](https://samishariff.github.io/Brain/mac.html)
 - [Getting started on Windows](https://samishariff.github.io/Brain/help.html)
@@ -31,9 +30,7 @@ keys stay private. Release files are hosted in the
 [public release channel](https://github.com/samishariff/Brain-Windows-Releases/releases),
 which installed copies of Brain check for updates.
 
-If Sami has already shared an earlier preview with you, keep your existing copy
-and backups. Installation, installed updates, and real recording devices still
-need testing. For help, contact Sami through your usual private channel.
+If Sami has already shared an earlier preview with you, keep your existing copy and backups until you have checked your imported work. Physical microphones, live calls, device changes and sleep/wake behavior remain unverified. For help, contact Sami through your usual private channel.
 
 Keep recordings, meeting text, account details, passwords, and diagnostic reports
 out of public posts.

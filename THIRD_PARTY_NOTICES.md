@@ -11,7 +11,12 @@ model weights below. The Windows package carries these license files alongside i
   `9df3158ed228a641a4b127942d7f459f24c9e13f04682659d05c00c80099b6b5`.
 - **LLVM OpenMP**, included by that Windows runtime archive. Its upstream Apache 2.0 license
   and LLVM exception are retained verbatim as `Helpers/llama/LICENSE-LLVM-OpenMP`.
-- **Qwen3-4B-Instruct-2507**, by the Qwen team at Alibaba Cloud, optionally downloaded as the
+- **Gemma 4 E4B IT**, by Google, optionally downloaded as the Unsloth Q4_K_M quantization at
+  revision `bfc15c382204943c3a8fff0c750b94ae2364d7a3`. Google declares Apache 2.0 at
+  [Gemma 4 license](https://ai.google.dev/gemma/docs/gemma_4_license); the license text is
+  included in [LICENSE-Gemma4](licenses/LICENSE-Gemma4). The 4,977,171,584-byte file is
+  verified against SHA-256 `85a896a047553e842f25297ee5b031d64ff30147d9c4af17b1e4b394cd1fab87`.
+- **Qwen3-4B-Instruct-2507**, retained for existing installations, by the Qwen team at Alibaba Cloud, previously downloaded as the
   `unsloth/Qwen3-4B-Instruct-2507-GGUF` Q4_K_M quantization. Licensed under Apache 2.0;
   see [LICENSE-Qwen3](licenses/LICENSE-Qwen3). The weight size and SHA-256 are pinned in
   `Brain.Core/BuiltInModelDefaults.cs`; the install must pass both before use.
@@ -22,11 +27,61 @@ License source provenance:
 | --- | --- | --- |
 | LICENSE-llama.cpp | [llama.cpp/LICENSE](https://raw.githubusercontent.com/ggml-org/llama.cpp/5266f24da75dc449bd56cbed7addb9c8e4a6a73e/LICENSE) | `94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d` |
 | LICENSE-Qwen3 | [Qwen3/LICENSE](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/resolve/cdbee75f17c01a7cc42f958dc650907174af0554/LICENSE) | `832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e` |
+| LICENSE-Gemma4 | [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), referenced by Google's Gemma 4 license | `cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30` |
 
-The GGUF repository declares `apache-2.0` at revision
+The legacy Qwen GGUF repository declares `apache-2.0` at revision
 `a06e946bb6b655725eafa393f4a9745d460374c9`. Its first-party model license is included above.
 Brain does not change the terms of these components. Other installed speech packs and application
 dependencies retain their own licenses and notices.
+
+## NVIDIA TitaNet speaker model
+
+Brain includes a waveform-input ONNX adaptation of **NVIDIA TitaNet large**,
+originally published by NVIDIA as `speakerverification_en_titanet_large`.
+The [official model card at revision 0dc382f40121a5fbd34db10a2bb04d826c2be6a8](https://huggingface.co/nvidia/speakerverification_en_titanet_large/blob/0dc382f40121a5fbd34db10a2bb04d826c2be6a8/README.md)
+licenses the model under **Creative Commons Attribution 4.0 International**.
+The complete terms are included in
+[LICENSE-TitaNet-CC-BY-4.0.txt](licenses/LICENSE-TitaNet-CC-BY-4.0.txt), from
+<https://creativecommons.org/licenses/by/4.0/legalcode.txt>, SHA256
+`9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411`.
+NVIDIA has not endorsed Brain or this adaptation.
+
+The source checkpoint SHA256 is
+`e838520693f269e7984f55bc8eb3c2d60ccf246bf4b896d4be9bcabe3e4b0fe3`.
+Brain's adaptation adds the checkpoint's waveform preprocessing and normalized
+speaker-vector output to a standard ONNX graph; it does not retrain the model.
+Its time masks use dynamic ONNX ranges to preserve NeMo's behavior on longer inputs.
+The bundled file `assets/speech/titanet-waveform-v1.onnx` is 88,736,171 bytes,
+SHA256 `65662b312748d4e083fddb2b7a5223cde0a0eec453ca8de8bf1dfb992ee1f07e`.
+The official source model card and complete license are linked above. This notice
+identifies Brain's adaptation and preserves the original authors' attribution
+and license.
+
+## English voice model candidate
+
+The opt-in `brain-speech-en-v2` delivery catalog uses **WeSpeaker ResNet34-LM**
+English speaker-embedding weights, provided by the
+[WeSpeaker project](https://github.com/wenet-e2e/wespeaker). This notice is retained
+for earlier candidate installations; current setup uses TitaNet for enrolled-person
+matching.
+The [official model card at revision f0c48c298fd835726c27956a5d617bad7115627e](https://huggingface.co/Wespeaker/wespeaker-resnet34-LM/blob/f0c48c298fd835726c27956a5d617bad7115627e/README.md)
+licenses these weights under **Creative Commons Attribution 4.0 International**.
+The complete terms are included in
+[LICENSE-WeSpeaker-CC-BY-4.0.txt](licenses/LICENSE-WeSpeaker-CC-BY-4.0.txt), obtained
+from <https://creativecommons.org/licenses/by/4.0/legalcode.txt>, SHA256
+`9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411`.
+No endorsement by the model authors is implied.
+
+Source: the [official Sherpa conversion](https://github.com/k2-fsa/sherpa-onnx/releases/download/speaker-recongition-models/wespeaker_en_voxceleb_resnet34_LM.onnx),
+26,530,550 bytes, SHA256
+`e9848563da86f263117134dfd7ad63c92355b37de492b55e325400c9d9c39012`.
+Brain appends exactly 39 ONNX metadata bytes declaring
+`feature_normalize_type=global-mean`, matching the original model's feature
+normalization. The graph and weights are unchanged. The prepared file is
+26,530,589 bytes, SHA256
+`ce2c5db3fb2c438f1d58de35577c951bc27ea0d41ef74968de4a480a1a59e39b`.
+Both downloaded and prepared bytes must verify before installation. This notice
+identifies Brain's modification and preserves the authors' attribution and license.
 
 ## Calendar file support
 
