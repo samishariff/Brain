@@ -6,20 +6,20 @@ Record the conversation. Keep the useful details.
 
 Brain brings your meetings, notes, and next steps together on your Mac or
 Windows PC. See the actual app, including its meeting assistant, on the
-[Brain website](https://samishariff.github.io/Brain-Meeting/).
+[Brain website](https://samishariff.github.io/Brain/).
 
 **Brain for Mac is available now** — download it from the
-[Mac page](https://samishariff.github.io/Brain-Meeting/mac.html)
+[Mac page](https://samishariff.github.io/Brain/mac.html)
 (macOS 26 or later, Apple silicon). The Mac app is a signed, notarized disk
 image; the installed app updates itself from the public release channel.
 
 **Downloads for the Windows preview are being prepared.** There is not yet a
 Windows installer or an automatic-update feed.
 
-- [Mac setup](https://samishariff.github.io/Brain-Meeting/mac.html)
-- [Getting started on Windows](https://samishariff.github.io/Brain-Meeting/help.html)
-- [Your privacy](https://samishariff.github.io/Brain-Meeting/privacy.html)
-- [What is included and still being checked](https://samishariff.github.io/Brain-Meeting/release-notes.html)
+- [Mac setup](https://samishariff.github.io/Brain/mac.html)
+- [Getting started on Windows](https://samishariff.github.io/Brain/help.html)
+- [Your privacy](https://samishariff.github.io/Brain/privacy.html)
+- [What is included and still being checked](https://samishariff.github.io/Brain/release-notes.html)
 
 The screenshots show the real apps with fictional meeting content. Speech and
 summary tools can run on your own computer; optional online services are your
