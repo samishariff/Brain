@@ -1,0 +1,18 @@
+# Binaries belong in versioned Releases, never in Git history.
+*.exe
+*.msix
+*.msixbundle
+*.appxsym
+*.pdb
+*.zip
+
+# Signing keys and personal configuration never belong here.
+*.pfx
+*.p12
+*.key
+.env
+.env.*
+calendar-owner.json
+*.db
+*.wav
+*.rf64

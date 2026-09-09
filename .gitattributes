@@ -1,0 +1,2 @@
+# Preserve the reviewed bytes, including inventories whose hashes are published.
+* -text

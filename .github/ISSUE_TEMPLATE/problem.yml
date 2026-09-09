@@ -1,0 +1,20 @@
+name: Report a problem
+description: Tell Sami what happened in Brain for Windows.
+title: "[Brain] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying Brain. Give this report a short title above, then paste the report you copied from Brain below.
+
+        **This page and any attachments will be public.** Please remove private details from your description and review screenshots before attaching them. For private help, save your report and reply to Sami's invitation instead.
+
+        If Brain will not open, choose **Get help** in **Set up Brain.exe**. If that does not open either, just describe what you clicked and what happened.
+  - type: textarea
+    id: report
+    attributes:
+      label: Your report
+      description: Paste the report from Brain, or describe the problem in your own words.
+      placeholder: Click here and press Ctrl+V to paste your copied report.
+    validations:
+      required: true
