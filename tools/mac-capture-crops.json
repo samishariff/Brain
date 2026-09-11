@@ -1,0 +1,112 @@
+[
+  {
+    "file": "mac-live.png",
+    "source": "record-live-helper.png",
+    "crop": null
+  },
+  {
+    "file": "mac-transcript-detail.png",
+    "source": "record-live-helper.png",
+    "crop": [
+      497,
+      462,
+      1064,
+      1232
+    ]
+  },
+  {
+    "file": "mac-assistant-detail.png",
+    "source": "record-live-helper.png",
+    "crop": [
+      1579,
+      420,
+      1200,
+      1274
+    ]
+  },
+  {
+    "file": "mac-detection-full.png",
+    "source": "settings-recording.png",
+    "crop": null
+  },
+  {
+    "file": "mac-detection.png",
+    "source": "settings-recording.png",
+    "crop": [
+      1162,
+      140,
+      1410,
+      250
+    ]
+  },
+  {
+    "file": "mac-popover-call.png",
+    "source": "popover-call.png",
+    "crop": [
+      50,
+      505,
+      640,
+      215
+    ]
+  },
+  {
+    "file": "mac-speakers.png",
+    "source": "review-transcript.png",
+    "crop": null
+  },
+  {
+    "file": "mac-speakers-detail.png",
+    "source": "review-transcript.png",
+    "crop": [
+      497,
+      560,
+      1659,
+      910
+    ]
+  },
+  {
+    "file": "mac-people.png",
+    "source": "people-review.png",
+    "crop": null
+  },
+  {
+    "file": "mac-person-detail.png",
+    "source": "people-review.png",
+    "crop": [
+      1120,
+      420,
+      1638,
+      800
+    ]
+  },
+  {
+    "file": "mac-review-summary.png",
+    "source": "review-report.png",
+    "crop": null
+  },
+  {
+    "file": "mac-review-actions.png",
+    "source": "approved-record.png",
+    "crop": null
+  },
+  {
+    "file": "mac-actions.png",
+    "source": "actions-mine.png",
+    "crop": null
+  },
+  {
+    "file": "mac-speak.png",
+    "source": "settings-speak.png",
+    "crop": null
+  },
+  {
+    "file": "mac-speak-detail.png",
+    "source": "speak-history-panel.png",
+    "crop": null
+  },
+  {
+    "file": "mac-speak-pill.png",
+    "source": "speak-capsule-listening.png",
+    "crop": null
+  }
+]

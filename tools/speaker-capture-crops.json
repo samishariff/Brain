@@ -1,0 +1,6 @@
+[
+  { "file": "windows-speakers.png", "source": "saved-speakers-Dark-readable.png", "crop": null },
+  { "file": "windows-speakers-detail.png", "source": "saved-speakers-Dark-readable.png", "crop": [476, 384, 1500, 976] },
+  { "file": "windows-people.png", "source": "people-speakers-Dark-wide.png", "crop": null },
+  { "file": "windows-person-detail.png", "source": "people-speakers-Dark-wide.png", "crop": [1770, 560, 1002, 862] }
+]
