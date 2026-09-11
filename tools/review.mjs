@@ -1,6 +1,7 @@
 import { chromium } from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
@@ -13,6 +14,7 @@ const { server, url } = await startServer({ port: 0 });
 const browserChannel = process.env.BRAIN_WEBSITE_BROWSER ? `executable ${process.env.BRAIN_WEBSITE_BROWSER}` : (process.env.BRAIN_WEBSITE_BROWSER_CHANNEL || 'msedge');
 const browser = await chromium.launch(process.env.BRAIN_WEBSITE_BROWSER ? { executablePath: process.env.BRAIN_WEBSITE_BROWSER } : { channel: process.env.BRAIN_WEBSITE_BROWSER_CHANNEL || 'msedge' });
 const findings = [], checks = [], shots = [];
+let cropCheck = null;
 const check = async (name, action) => {
   try { await action(); checks.push({ name, passed: true }); console.log('PASS ' + name); }
   catch (error) { findings.push({ name, error: error.message }); console.error('FAIL ' + name + ': ' + error.message); }
@@ -391,14 +393,33 @@ try {
   });
   await check('Every cropped Mac asset is a pixel-exact crop of its full-frame capture', async () => {
     const manifest = JSON.parse(await readFile(path.join(root, 'tools/native-captures-mac.json')));
-    const pairs = manifest.files.filter(item => item.crop).map(item => ({ crop: item, full: manifest.files.find(other => !other.crop && other.source === item.source) })).filter(pair => pair.full);
-    assert.ok(pairs.length >= 4, 'cropped assets with a full-frame twin in assets/');
+    // Every crop is compared with its full-frame twin on the site. A crop whose full frame is not
+    // published (the menu-bar panel showed test-environment rows) must be named here and is
+    // compared with the original capture in artifacts/ when that folder is present.
+    const unpublishedFullFrames = ['mac-popover-call.png'];
+    const originalAsDataUrl = async source => {
+      const file = path.join(root, 'artifacts/native-capture-mac/originals', source);
+      return existsSync(file) ? `data:image/png;base64,${(await readFile(file)).toString('base64')}` : null;
+    };
+    const pairs = [];
+    const skipped = [];
+    for (const item of manifest.files.filter(entry => entry.crop)) {
+      const full = manifest.files.find(other => !other.crop && other.source === item.source);
+      if (full) { pairs.push({ crop: item, fullSrc: `assets/${full.file}`, label: full.file }); continue; }
+      assert.ok(unpublishedFullFrames.includes(item.file), `${item.file} has no full-frame twin in assets/ and is not listed as expected`);
+      const original = await originalAsDataUrl(item.source);
+      if (original) pairs.push({ crop: item, fullSrc: original, label: `original ${item.source}` }); else skipped.push(item.file);
+    }
+    assert.deepEqual(unpublishedFullFrames.filter(file => !manifest.files.some(entry => entry.file === file)), [], 'expected unpaired crops exist in the manifest');
+    assert.ok(pairs.length >= 5, 'cropped assets with a comparison source');
+    if (skipped.length) console.warn(`  crop check skipped (original capture not present locally): ${skipped.join(', ')}`);
+    cropCheck = { compared: pairs.map(pair => `${pair.crop.file} vs ${pair.label}`), skipped };
     const ctx = await context({ viewport: { width: 800, height: 600 } });
     const page = await ctx.newPage(); await page.goto(url);
-    for (const { crop, full } of pairs) {
-      const mismatch = await page.evaluate(async ({ cropFile, fullFile, rect }) => {
+    for (const { crop, fullSrc, label } of pairs) {
+      const mismatch = await page.evaluate(async ({ cropFile, fullSrc, rect }) => {
         const load = src => new Promise((resolve, reject) => { const image = new Image(); image.onload = () => resolve(image); image.onerror = reject; image.src = src; });
-        const [cropped, whole] = await Promise.all([load(`assets/${cropFile}`), load(`assets/${fullFile}`)]);
+        const [cropped, whole] = await Promise.all([load(`assets/${cropFile}`), load(fullSrc)]);
         const [x, y, w, h] = rect;
         if (cropped.naturalWidth !== w || cropped.naturalHeight !== h) return `size ${cropped.naturalWidth}x${cropped.naturalHeight}`;
         const draw = (image, sx, sy) => { const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h; const context2d = canvas.getContext('2d', { willReadFrequently: true }); context2d.drawImage(image, sx, sy, w, h, 0, 0, w, h); return context2d.getImageData(0, 0, w, h).data; };
@@ -406,8 +427,8 @@ try {
         let different = 0;
         for (let i = 0; i < a.length; i += 1) if (a[i] !== b[i]) different += 1;
         return different ? `${different} channel values differ` : '';
-      }, { cropFile: crop.file, fullFile: full.file, rect: crop.crop });
-      assert.equal(mismatch, '', `${crop.file} vs ${full.file}`);
+      }, { cropFile: crop.file, fullSrc, rect: crop.crop });
+      assert.equal(mismatch, '', `${crop.file} vs ${label}`);
     }
     await ctx.close();
   });
@@ -442,7 +463,7 @@ try {
   });
 } finally {
   await browser.close(); await new Promise(resolve => server.close(resolve));
-  const report = { passed: findings.length === 0, completedUtc: new Date().toISOString(), browser: browserChannel, sourceHashes, checks, findings, screenshots: shots, limitations: [`Headless Chromium review through the ${browserChannel} channel; native Safari and Firefox are not exercised.`, 'CSS zoom models layout enlargement, not a native browser zoom shortcut.', 'Real app features and live audio are not executed by this website review.', 'Automated accessibility checks supplement visual and keyboard review.'] };
+  const report = { passed: findings.length === 0, completedUtc: new Date().toISOString(), browser: browserChannel, sourceHashes, checks, cropCheck, findings, screenshots: shots, limitations: [`Headless Chromium review through the ${browserChannel} channel; native Safari and Firefox are not exercised.`, 'CSS zoom models layout enlargement, not a native browser zoom shortcut.', 'Real app features and live audio are not executed by this website review.', 'Automated accessibility checks supplement visual and keyboard review.'] };
   await writeFile(path.join(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
   await writeFile(path.join(output, 'gallery.html'), `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brain prototype review</title><style>body{font:16px system-ui;max-width:1200px;margin:40px auto;padding:20px;background:#f4f7f8;color:#172f3e}a{color:#075e77}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}figure{margin:0;background:white;padding:15px;border-radius:12px}img{width:100%;height:360px;object-fit:cover;object-position:top}figcaption{margin-top:12px}</style><h1>Brain prototype review</h1><p>${report.passed ? 'All automated checks passed.' : `${findings.length} checks need attention.`} Open an image for its full-size view.</p><main>${shots.map(file => `<figure><a href="${file}"><img src="${file}" alt="${file.replace('.png','').replaceAll('-',' ')}" loading="lazy"></a><figcaption>${file}</figcaption></figure>`).join('')}</main></html>`);
   console.log(`Review: ${path.join(output, 'report.json')}\nGallery: ${path.join(output, 'gallery.html')}`);

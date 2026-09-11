@@ -28,7 +28,7 @@
         assistant:{ file:'mac-assistant-detail.png', alt:'A readable crop of the actual Mac meeting helper.', caption:'Meeting helper. Enlarged from the same native capture.' }
       },
       speak: {
-        full:{ file:'mac-speak.png', alt:'The actual Mac Settings › Speak screen.', label:' Focus on dictation history', status:'Showing the complete captured Speak settings.' },
+        full:{ file:'mac-speak.png', alt:'The actual Mac Settings › Speak screen, with the Enable Speak switch, the confirmation option, the Hold to speak shortcut, and its permissions.', label:' Focus on dictation history', status:'Showing the complete captured Speak settings.' },
         detail:{ file:'mac-speak-detail.png', alt:'The actual Mac Speak History panel with sample dictations.', label:' Show the complete Speak screen', status:'Showing the captured Speak History panel.' }
       },
       outcome: {
@@ -167,6 +167,10 @@
     platform = next;
     body.dataset.platform = next;
     platformButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.platformChoice === next)));
+    document.querySelectorAll('.workspace-image').forEach(image => {
+      const selected = panel(workspace, next)?.contains(image);
+      if (selected) { image.setAttribute('fetchpriority', 'high'); image.removeAttribute('loading'); } else image.removeAttribute('fetchpriority');
+    });
     if (save) { try { localStorage.setItem('brain-platform', next); } catch { /* Keep this view. */ } }
     if (!body.classList.contains('enhanced')) return;
     renderFocus(focus, false); renderSpeak(speakFocused, false); renderOutcome(outcome, false);

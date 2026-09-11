@@ -123,7 +123,7 @@ Suggested review:
 3. Use Workspace, Transcript, and Helper (Assistant on Windows) to inspect the
    native capture. Replay its layered entrance; open any capture at full size.
 4. Review voice memory and Speak. Focus on dictation history to inspect a
-   genuine crop. The floating Listening pill is the actual Windows control.
+   genuine crop. The floating indicator is the actual control on each platform: the Windows Listening pill and the Mac Speak capsule.
 5. Copy the CLI example and follow **Connect your tools**. Switch platforms in
    the guide to see the appropriate launch and export commands.
 6. Review the page at a narrow phone width and with reduced motion enabled.
@@ -196,7 +196,10 @@ requested; clipboard fallback; WCAG A/AA checks; reduced motion; forced colors;
 no JavaScript (both platforms readable); blocked storage; 200% CSS zoom; local
 routes/fragments; preserved release destinations; provenance hashes for both
 capture manifests plus every Mac and Windows PNG the pages reference; and a
-pixel comparison of every cropped Mac asset against its full-frame twin.
+pixel comparison of every cropped Mac asset against its full-frame twin (the
+menu-bar card, whose full panel is not published, is compared with its original
+capture in `artifacts/native-capture-mac/originals/` when that folder is present
+and reported as skipped otherwise).
 
 The review exercises the website in Chromium/Edge. It does not certify app
 features, native Safari/Firefox rendering, or physical microphones.
