@@ -1,4 +1,35 @@
-# Native Windows prototype review
+# Brain prototype review
+
+## Professional refinement
+
+The owner requested a more professional result closer to Slack. Slack's live
+homepage was inspected for hierarchy and product storytelling. Its assets,
+testimonials, commercial claims, and brand were not copied. The prior Brain
+revision is tagged `prototype-v2-native-reviewed`.
+
+This refinement pairs the product stage with the headline and downloads, gives
+website text and actions stronger hierarchy, adds a compact feature navigation,
+and lets visitors inspect actual saved-review captures in place. Original native
+assets and their provenance are unchanged. Speak and the closing download section
+receive distinct fields within the existing blue/teal palette.
+
+The independent professional finish reviewer returned `ship` with no material
+fixes. The reviewer examined desktop, tablet, phone, narrow, Speak, and 200%
+enlargement captures, plus the Slack benchmark and current source. The finding
+applies to this prototype, not certification of app runtime behavior.
+
+The detector ran once for this revision. Most findings identified revised tokens
+against the previous DESIGN.md, which the documenter reconciles from actual code.
+Wrapper-padding flags were checked visually: inset containers keep content away
+from section edges. No native app pixels were restyled. The unchanged reading
+page disclosure styles remain outside this homepage refinement.
+
+Current browser evidence is in `artifacts/review/`; the prior captures are in
+`artifacts/review-v2-native/`. Final packaging repeats the exact source rollback,
+three-mode distribution staging, and extracted offline verification against the
+new candidate. Nothing was published.
+
+## Native Windows revision
 
 The first prototype was rejected because its simulated interface felt fake.
 This revision replaces those illustrations with native Windows captures and

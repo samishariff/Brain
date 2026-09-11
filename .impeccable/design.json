@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-11T03:28:57.974Z",
+  "generatedAt": "2026-09-11T04:03:31.613Z",
   "title": "Design System: Brain",
   "extensions": {
     "colorMeta": {
@@ -62,16 +62,16 @@
       },
       "paper": {
         "role": "neutral",
-        "displayName": "Bright Paper",
+        "displayName": "White Homepage Canvas",
         "tonalRamp": [
-          "oklch(15% 0.0045 134.85)",
-          "oklch(26.43% 0.0045 134.85)",
-          "oklch(37.86% 0.0045 134.85)",
-          "oklch(49.29% 0.0045 134.85)",
-          "oklch(60.71% 0.0045 134.85)",
-          "oklch(72.14% 0.0045 134.85)",
-          "oklch(83.57% 0.0045 134.85)",
-          "oklch(95% 0.0045 134.85)"
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26.43% 0.0000 89.88)",
+          "oklch(37.86% 0.0000 89.88)",
+          "oklch(49.29% 0.0000 89.88)",
+          "oklch(60.71% 0.0000 89.88)",
+          "oklch(72.14% 0.0000 89.88)",
+          "oklch(83.57% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
         ]
       },
       "line": {
@@ -103,22 +103,22 @@
         ]
       },
       "meeting-surface": {
-        "role": "secondary",
+        "role": "neutral",
         "displayName": "Meeting Surface",
         "tonalRamp": [
-          "oklch(15% 0.0075 164.93)",
-          "oklch(26.43% 0.0075 164.93)",
-          "oklch(37.86% 0.0075 164.93)",
-          "oklch(49.29% 0.0075 164.93)",
-          "oklch(60.71% 0.0075 164.93)",
-          "oklch(72.14% 0.0075 164.93)",
-          "oklch(83.57% 0.0075 164.93)",
-          "oklch(95% 0.0075 164.93)"
+          "oklch(15% 0.0045 258.32)",
+          "oklch(26.43% 0.0045 258.32)",
+          "oklch(37.86% 0.0045 258.32)",
+          "oklch(49.29% 0.0045 258.32)",
+          "oklch(60.71% 0.0045 258.32)",
+          "oklch(72.14% 0.0045 258.32)",
+          "oklch(83.57% 0.0045 258.32)",
+          "oklch(95% 0.0045 258.32)"
         ]
       },
       "agents-surface": {
         "role": "secondary",
-        "displayName": "Agents Surface",
+        "displayName": "Teal Product and Agents Surface",
         "tonalRamp": [
           "oklch(15% 0.0104 174.27)",
           "oklch(26.43% 0.0104 174.27)",
@@ -162,14 +162,14 @@
         "role": "neutral",
         "displayName": "Deep Surface Supporting Text",
         "tonalRamp": [
-          "oklch(15% 0.0272 214.45)",
-          "oklch(26.43% 0.0272 214.45)",
-          "oklch(37.86% 0.0272 214.45)",
-          "oklch(49.29% 0.0272 214.45)",
-          "oklch(60.71% 0.0272 214.45)",
-          "oklch(72.14% 0.0272 214.45)",
-          "oklch(83.57% 0.0272 214.45)",
-          "oklch(95% 0.0272 214.45)"
+          "oklch(15% 0.0222 214.45)",
+          "oklch(26.43% 0.0222 214.45)",
+          "oklch(37.86% 0.0222 214.45)",
+          "oklch(49.29% 0.0222 214.45)",
+          "oklch(60.71% 0.0222 214.45)",
+          "oklch(72.14% 0.0222 214.45)",
+          "oklch(83.57% 0.0222 214.45)",
+          "oklch(95% 0.0222 214.45)"
         ]
       },
       "command-paper": {
@@ -283,6 +283,20 @@
           "oklch(83.57% 0.0045 258.32)",
           "oklch(95% 0.0045 258.32)"
         ]
+      },
+      "speak-surface": {
+        "role": "secondary",
+        "displayName": "Speak Frame",
+        "tonalRamp": [
+          "oklch(15% 0.0143 264.42)",
+          "oklch(26.43% 0.0143 264.42)",
+          "oklch(37.86% 0.0143 264.42)",
+          "oklch(49.29% 0.0143 264.42)",
+          "oklch(60.71% 0.0143 264.42)",
+          "oklch(72.14% 0.0143 264.42)",
+          "oklch(83.57% 0.0143 264.42)",
+          "oklch(95% 0.0143 264.42)"
+        ]
       }
     },
     "typographyMeta": {
@@ -322,23 +336,18 @@
     "shadows": [
       {
         "name": "workspace",
-        "value": "0 38px 66px -35px #142f3d66,0 4px 12px #142f3d13",
+        "value": "0 18px 32px -18px #142f3d66",
         "purpose": "Large authentic app window."
       },
       {
         "name": "workspace-detail",
-        "value": "0 24px 45px -20px #142f3d80",
+        "value": "0 16px 26px -12px #142f3d80",
         "purpose": "Attached native crop."
       },
       {
         "name": "native-figure",
-        "value": "0 24px 40px -24px #17392e50",
+        "value": "0 20px 36px -22px #17392e55",
         "purpose": "Supporting captures."
-      },
-      {
-        "name": "command-sheet",
-        "value": "0 18px 30px -24px #194e3550",
-        "purpose": "Literal CLI reference sheet."
       },
       {
         "name": "selected-platform",
@@ -355,7 +364,7 @@
       {
         "name": "image-selection",
         "value": "350ms cubic-bezier(.16,1,.3,1)",
-        "purpose": "Interruptible image focus, meeting step, and Speak changes."
+        "purpose": "Interruptible workspace focus, meeting step, Speak, and saved-review image changes."
       },
       {
         "name": "workspace-entrance",
@@ -381,8 +390,8 @@
       },
       {
         "name": "homepage-container-stack",
-        "value": "800px",
-        "query": "@container brain-site (max-width:800px)"
+        "value": "850px",
+        "query": "@container brain-site (max-width:850px)"
       },
       {
         "name": "homepage-container-mobile",
@@ -413,16 +422,16 @@
     "responsiveContext": "The homepage body declares container: brain-site / inline-size. Container rules respond to its available width, including zoom. Reading-page media rules remain in the cascade; some homepage type clamps retain vw.",
     "tonalRampNote": "Ramps are synthesized OKLCH panel visualization metadata, preserving extracted hue/chroma. They are not implemented CSS scales or additional normative color tokens.",
     "componentContext": "Homepage snippets inherit scoped --ink/--muted/--blue/--teal when mounted in the homepage; fallback values reproduce that scope. Reading button belongs in the incumbent root palette. Interaction scripts are not embedded in static component previews.",
-    "notCanonized": "The agents.html uppercase eyebrow and the base verification disclosure's generated plus/minus glyph icon are carried defects, excluded from tokens and reusable components. No UI repairs are made."
+    "notCanonized": "The base verification disclosure's generated plus/minus glyph icon is a carried defect, excluded from reusable components. The guide eyebrow has been removed. No UI repairs are made in this documentation pass."
   },
   "components": [
     {
       "name": "Homepage Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Compact ink action; teal hover and blue keyboard focus.",
-      "html": "<div class=\"ds-sample\"><a class=\"ds-primary\" href=\"#download\">Get Brain <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></a></div>",
-      "css": ".ds-primary{font-family:Manrope,\"Segoe UI\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;padding:13px 20px;border-radius:6px;background:var(--ink,#172f3e);color:#fff;font-size:12px;line-height:1.6;font-weight:700;text-decoration:none;transition:background-color 140ms ease-out}.ds-primary:hover{background:var(--teal,#086f74);color:#fff}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}}"
+      "description": "Confident blue action; teal hover and blue keyboard focus.",
+      "html": "<div class=\"ds-sample\"><a class=\"ds-primary\" href=\"#download\">Get Brain <svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-primary{font-family:Manrope,\"Segoe UI\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:54px;padding:16px 24px;border-radius:6px;background:var(--blue,#155fd1);color:#fff;font-size:15px;line-height:1.6;font-weight:750;text-decoration:none;transition:background-color 140ms ease-out}.ds-primary:hover{background:var(--teal,#086f74);color:#fff}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}}"
     },
     {
       "name": "Reading Primary Button",
@@ -438,7 +447,7 @@
       "refersTo": "platform-option",
       "description": "Homepage segmented Mac/Windows selection. Behavior is supplied by showcase.js in the site.",
       "html": "<div class=\"ds-sample\"><div class=\"ds-platform\" role=\"group\" aria-label=\"Choose your platform\"><button class=\"ds-platform-option\" type=\"button\" aria-pressed=\"false\">Mac</button><button class=\"ds-platform-option\" type=\"button\" aria-pressed=\"true\">Windows</button></div></div>",
-      "css": ".ds-platform{display:inline-flex;padding:4px;background:#e7efec;border:1px solid #c9d8d3;border-radius:999px}.ds-platform-option{font-family:Manrope,\"Segoe UI\",sans-serif;appearance:none;border:0;margin:0;min-height:34px;padding:5px 20px;border-radius:999px;background:transparent;color:var(--muted,#4d636d);font-size:12px;font-weight:650;line-height:1.4;cursor:pointer;transition:background-color 140ms ease-out,color 140ms ease-out}.ds-platform-option:hover{color:var(--ink,#172f3e)}.ds-platform-option[aria-pressed=\"true\"]{background:#fff;color:var(--ink,#172f3e);box-shadow:0 1px 2px #213a5826,0 6px 16px -10px #213a5866}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-platform-option{transition:none}}@media(forced-colors:active){.ds-platform{border:1px solid CanvasText}.ds-platform-option[aria-pressed=\"true\"]{border:1px solid ButtonText}}"
+      "css": ".ds-platform{display:inline-flex;padding:4px;background:#f5f7fa;border:1px solid var(--line,#d5dfdc);border-radius:999px}.ds-platform-option{font-family:Manrope,\"Segoe UI\",sans-serif;appearance:none;border:0;margin:0;min-height:38px;padding:6px 22px;border-radius:999px;background:transparent;color:var(--muted,#4d636d);font-size:14px;font-weight:650;line-height:1.4;cursor:pointer;transition:background-color 140ms ease-out,color 140ms ease-out}.ds-platform-option:hover{color:var(--ink,#172f3e)}.ds-platform-option[aria-pressed=\"true\"]{background:#fff;color:var(--ink,#172f3e);box-shadow:0 1px 2px #213a5826,0 6px 16px -10px #213a5866}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-platform-option{transition:none}}@media(forced-colors:active){.ds-platform{border:1px solid CanvasText}.ds-platform-option[aria-pressed=\"true\"]{border:1px solid ButtonText}}"
     },
     {
       "name": "Workspace Focus Controls",
@@ -446,22 +455,22 @@
       "refersTo": "focus-control",
       "description": "Website controls selecting full workspace or native detail crops.",
       "html": "<div class=\"ds-sample\"><div class=\"ds-focus\" role=\"group\" aria-label=\"Inspect the Windows workspace\"><button type=\"button\" aria-pressed=\"true\">Workspace</button><button type=\"button\" aria-pressed=\"false\">Transcript</button><button type=\"button\" aria-pressed=\"false\">Assistant</button></div></div>",
-      "css": ".ds-focus{display:flex;gap:22px}.ds-focus button{font-family:Manrope,\"Segoe UI\",sans-serif;border:0;background:transparent;font-size:12px;line-height:1.7;color:var(--muted,#4d636d);padding:8px 0;border-bottom:1px solid transparent;cursor:pointer}.ds-focus button[aria-pressed=\"true\"]{border-bottom-color:var(--teal,#086f74);color:var(--teal,#086f74)}.ds-focus button:hover{color:var(--ink,#172f3e)}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(forced-colors:active){.ds-focus button[aria-pressed=\"true\"]{border-bottom:2px solid ButtonText}}"
+      "css": ".ds-focus{display:flex;gap:2px;padding:4px;background:#fff;border-radius:8px}.ds-focus button{font-family:Manrope,\"Segoe UI\",sans-serif;border:0;background:transparent;color:var(--muted,#4d636d);padding:8px 10px;min-height:38px;font-size:12px;line-height:1.7;font-weight:600;border-radius:5px;cursor:pointer}.ds-focus button[aria-pressed=\"true\"]{color:#fff;background:var(--teal,#086f74)}.ds-focus button:hover:not([aria-pressed=\"true\"]){background:#e7f0ed}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(forced-colors:active){.ds-focus button[aria-pressed=\"true\"]{outline:2px solid ButtonText;outline-offset:-2px}}"
     },
     {
       "name": "Meeting Step Controls",
       "kind": "custom",
       "description": "Underlined feature selection across actual meeting captures.",
       "html": "<div class=\"ds-sample\"><div class=\"ds-steps\" role=\"group\" aria-label=\"Explore the Windows meeting features\"><button type=\"button\" aria-pressed=\"true\">Automatic detection</button><button type=\"button\" aria-pressed=\"false\">Live transcription</button><button type=\"button\" aria-pressed=\"false\">Speaker diarization</button></div></div>",
-      "css": ".ds-steps{display:flex;gap:30px;border-bottom:1px solid #c4d2cb;background:#e8eeeb}.ds-steps button{font-family:Manrope,\"Segoe UI\",sans-serif;border:0;background:transparent;border-bottom:2px solid transparent;margin-bottom:-1px;padding:16px 0;font-size:13px;line-height:1.7;color:#435f57;cursor:pointer}.ds-steps button[aria-pressed=\"true\"]{color:#0b544e;border-color:#0b6b60;font-weight:700}.ds-steps button:hover{color:#0b544e}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(forced-colors:active){.ds-steps button[aria-pressed=\"true\"]{border-bottom:2px solid ButtonText}}"
+      "css": ".ds-steps{display:flex;gap:36px;border-bottom:1px solid #b8c9c2;background:#f5f7fa}.ds-steps button{font-family:Manrope,\"Segoe UI\",sans-serif;border:0;border-bottom:3px solid transparent;background:transparent;padding:16px 4px;margin-bottom:-1px;font-size:16px;line-height:1.7;color:var(--muted,#4d636d);font-weight:600;cursor:pointer}.ds-steps button[aria-pressed=\"true\"]{color:var(--teal,#086f74);border-color:var(--teal,#086f74)}.ds-steps button:hover{color:var(--blue,#155fd1)}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(forced-colors:active){.ds-steps button[aria-pressed=\"true\"]{outline:2px solid ButtonText;outline-offset:-2px}}"
     },
     {
       "name": "Replay Action",
       "kind": "button",
       "refersTo": "replay-button",
       "description": "Quiet image replay action, available with progressive enhancement.",
-      "html": "<div class=\"ds-sample\"><button class=\"ds-replay\" type=\"button\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 10a8 8 0 1 1 2 8M4 4v6h6\"/></svg>Replay the view</button></div>",
-      "css": ".ds-replay{font-family:Manrope,\"Segoe UI\",sans-serif;display:inline-flex;align-items:center;gap:7px;background:transparent;border:0;color:var(--teal,#086f74);padding:7px 0;min-height:34px;font-size:12px;line-height:1.7;cursor:pointer}.ds-replay:hover{text-decoration:underline}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}"
+      "html": "<div class=\"ds-sample\"><button class=\"ds-replay\" type=\"button\"><svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 10a8 8 0 1 1 2 8M4 4v6h6\"/></svg>Replay the view</button></div>",
+      "css": ".ds-replay{font-family:Manrope,\"Segoe UI\",sans-serif;display:inline-flex;align-items:center;gap:8px;background:transparent;border:0;color:var(--teal,#086f74);padding:8px 0;min-height:40px;font-size:12px;line-height:1.7;cursor:pointer}.ds-replay:hover{text-decoration:underline}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}"
     },
     {
       "name": "Copy Button",
@@ -469,7 +478,7 @@
       "refersTo": "copy-button",
       "description": "Copies a real command with a selection fallback; no fabricated result output.",
       "html": "<div class=\"ds-sample\"><button class=\"ds-copy\" type=\"button\">Copy</button></div>",
-      "css": ".ds-copy{font-family:Manrope,\"Segoe UI\",sans-serif;font-size:12px;line-height:1.7;padding:6px 10px;min-height:34px;border:1px solid #94b9a7;color:#22513e;background:#edf6f1;border-radius:4px;cursor:pointer}.ds-copy:hover{background:#dcefe4}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}"
+      "css": ".ds-copy{font-family:Manrope,\"Segoe UI\",sans-serif;font-size:12px;line-height:1.7;padding:8px 12px;min-height:40px;border:1px solid #94b9a7;color:#22513e;background:#edf6f1;border-radius:4px;cursor:pointer}.ds-copy:hover{background:#dcefe4}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}"
     },
     {
       "name": "Command Sheet",
@@ -477,23 +486,31 @@
       "refersTo": "command-sheet",
       "description": "A website reference sheet for literal CLI syntax.",
       "html": "<div class=\"ds-sample\"><div class=\"ds-command\"><div class=\"ds-command-header\"><span>Brain CLI</span><span>Local · scope-bound</span></div><p>Search approved meeting context</p><div class=\"ds-command-row\"><code>brain search \"release decision\" --scope Personal --json</code></div><div class=\"ds-command-footnote\">Real CLI syntax. Replace Personal with your scope.<br><a href=\"agents.html#start\">Find your platform’s launcher</a></div></div></div>",
-      "css": ".ds-command{font-family:Manrope,\"Segoe UI\",sans-serif;background:#fcfefc;border:1px solid #b8cec5;box-shadow:0 18px 30px -24px #194e3550;border-radius:9px;padding:25px;min-width:0}.ds-command-header{display:flex;justify-content:space-between;gap:12px;font-size:12px;line-height:1.7;color:#315e4d;border-bottom:1px solid #d6e5de;padding-bottom:20px;margin-bottom:24px}.ds-command-header>span:first-child{font-weight:750}.ds-command>p{font-size:12px;line-height:1.7;color:#436757;margin:0 0 12px}.ds-command-row{display:flex;align-items:start;gap:20px;margin-bottom:30px}.ds-command-row code{font:13px/1.9 ui-monospace,Consolas,monospace;color:#184534;white-space:pre-wrap;overflow-wrap:anywhere}.ds-command-footnote{border-top:1px solid #d6e5de;padding-top:20px;font-size:12px;line-height:1.8;color:#4f6b5e}.ds-command a{color:var(--teal,#086f74);text-underline-offset:4px}.ds-command a:hover{color:#134faf}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(forced-colors:active){.ds-command{border:1px solid CanvasText;box-shadow:none}}"
+      "css": ".ds-command{font-family:Manrope,\"Segoe UI\",sans-serif;background:#fcfefc;border:1px solid #b8cec5;border-radius:10px;padding:32px;min-width:0}.ds-command-header{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;line-height:1.7;color:#315e4d;border-bottom:1px solid #d6e5de;padding-bottom:20px;margin-bottom:26px}.ds-command-header>span:first-child{font-weight:750}.ds-command>p{font-size:14px;line-height:1.7;color:#436757;margin:0 0 12px}.ds-command-row{display:flex;align-items:start;gap:20px;margin-bottom:30px}.ds-command-row code{font:14px/1.85 ui-monospace,Consolas,monospace;color:#184534;white-space:pre-wrap;overflow-wrap:anywhere}.ds-command-footnote{border-top:1px solid #d6e5de;padding-top:20px;font-size:13px;line-height:1.8;color:#4f6b5e}.ds-command a{color:var(--teal,#086f74);text-underline-offset:4px}.ds-command a:hover{color:#134faf}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}@media(forced-colors:active){.ds-command{border:1px solid CanvasText;box-shadow:none}}"
     },
     {
       "name": "Homepage Navigation",
       "kind": "nav",
-      "description": "Quiet Manrope navigation with blue hover and current-page treatment.",
-      "html": "<div class=\"ds-sample\"><nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#inside-brain\">Meetings</a><a href=\"#speak\">Speak</a><a href=\"#agents\">CLI &amp; agents</a><a class=\"ds-nav-download\" href=\"#download\">Get Brain <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></a></nav></div>",
-      "css": ".ds-nav{font-family:Manrope,\"Segoe UI\",sans-serif;display:flex;align-items:center;gap:32px;font-size:13px;line-height:1.7;font-weight:600}.ds-nav a{display:inline-flex;min-height:44px;align-items:center;color:var(--ink,#172f3e);text-decoration:none;text-underline-offset:4px}.ds-nav .ds-nav-download{gap:18px}.ds-nav a:hover,.ds-nav a[aria-current=\"page\"]{color:var(--blue,#155fd1);text-decoration:underline}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}"
+      "description": "Sticky white header navigation with a blue download action; mobile retains the download.",
+      "html": "<div class=\"ds-sample ds-header-shell\"><nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#inside-brain\">Meetings</a><a href=\"#speak\">Speak</a><a href=\"#agents\">CLI &amp; agents</a><a class=\"ds-nav-download\" href=\"#download\">Get Brain <svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></a></nav></div>",
+      "css": ".ds-header-shell{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #e9eeec}.ds-nav{font-family:Manrope,\"Segoe UI\",sans-serif;display:flex;align-items:center;gap:32px;font-size:15px;line-height:1.7;font-weight:600}.ds-nav a{display:inline-flex;min-height:44px;align-items:center;color:var(--ink,#172f3e);text-decoration:none;text-underline-offset:4px}.ds-nav .ds-nav-download{gap:22px;padding:10px 22px;background:var(--blue,#155fd1);color:#fff;border-radius:6px;text-decoration:none}.ds-nav .ds-nav-download:hover{background:var(--teal,#086f74);color:#fff;text-decoration:none}.ds-nav a:hover,.ds-nav a[aria-current=\"page\"]{color:var(--blue,#155fd1);text-decoration:underline}.ds-sample :focus-visible{outline:3px solid var(--blue,#155fd1);outline-offset:5px}"
+    },
+    {
+      "name": "Saved Review Controls",
+      "kind": "custom",
+      "refersTo": "outcome-control",
+      "description": "Selects native assistant, summary, and action screenshots; keyboard selection updates image, caption, full-size link, and status.",
+      "html": "<div class=\"ds-sample ds-review\"><div class=\"ds-outcomes\" role=\"group\" aria-label=\"Explore the saved meeting\"><button type=\"button\" aria-pressed=\"true\">Ask a question</button><button type=\"button\" aria-pressed=\"false\">Review the summary</button><button type=\"button\" aria-pressed=\"false\">Find the next step</button></div></div>",
+      "css": ".ds-review{background:#142c38}.ds-outcomes{display:flex;flex-wrap:wrap;gap:4px}.ds-outcomes button{font-family:Manrope,\"Segoe UI\",sans-serif;padding:10px 13px;min-height:44px;border:1px solid transparent;border-radius:5px;background:transparent;color:#bed1d6;font-size:13px;line-height:1.7;font-weight:600;cursor:pointer}.ds-outcomes button[aria-pressed=\"true\"]{color:#142c38;background:#d8efe7}.ds-outcomes button:hover:not([aria-pressed=\"true\"]){border-color:#bed1d6}.ds-review :focus-visible{outline:3px solid #a2dece;outline-offset:5px}@media(forced-colors:active){.ds-outcomes button[aria-pressed=\"true\"]{outline:2px solid ButtonText;outline-offset:-2px}}"
     }
   ],
   "narrative": {
     "northStar": "Brain, in focus",
-    "overview": "Brain's existing blue and teal identity frames authentic native app captures on bright, lightly tinted website surfaces. Manrope, generous section space, and restrained website controls keep the app imagery prominent. The original Brain logo remains the identity anchor.\n\nThis is a record of the completed prototype, derived from `style.css`, `showcase.css`, `index.html`, `showcase.js`, `agents.html`, and `screenshots.html`. “Brain, in focus” describes the implemented image-inspection pattern; it is not a newly approved brand direction. Homepage values are scoped overrides; reading pages retain the incumbent white canvas and base palette. Native screenshot typography, controls, colors, and floating indicators are image content, not website tokens.",
+    "overview": "Brain's existing blue and teal identity frames authentic native app captures on white, teal, and pale blue website surfaces. Stronger Manrope headings, readable supporting copy, blue actions, and generous product stages give the refined homepage a more professional hierarchy. The original Brain logo remains the identity anchor. Slack informed product storytelling and hierarchy; its brand assets and visual identity are not part of this system.\n\nThis is a record of the completed prototype, derived from `style.css`, `showcase.css`, `index.html`, `showcase.js`, `agents.html`, and `screenshots.html`. “Brain, in focus” describes the implemented image-inspection pattern; it is not a newly approved brand direction. Homepage values are scoped overrides; reading pages retain the incumbent white canvas and base palette. Native screenshot typography, controls, colors, and floating indicators are image content, not website tokens.",
     "keyCharacteristics": [
-      "Bright paper surfaces, dark blue ink, teal links, and blue keyboard focus.",
+      "White canvas, dark blue ink, teal product stages, and blue actions and keyboard focus.",
       "Authentic app windows with readable crops and full-size inspection links.",
-      "Manrope headings and compact, quiet website controls.",
+      "Confident Manrope headings, larger supporting text, and clear website controls.",
       "Layered imagery with one authored entrance and interruptible selection motion.",
       "Quieter reading pages sharing the logo, type family, and blue/teal identity."
     ],

@@ -31,6 +31,19 @@ Suggested review:
    the guide to see the appropriate launch and export commands.
 6. Review the page at a narrow phone width and with reduced motion enabled.
 
+The professional refinement pairs the headline and download with the Windows
+product stage in the first desktop screen. The sticky header, feature navigation,
+larger supporting type, blue actions, and separate Speak and closing sections
+make the page easier to scan. In saved meeting review, switch between the actual
+question, summary, and action captures without leaving the page. Keyboard arrows
+work; the original image links remain available when JavaScript is disabled.
+
+Slack's live homepage was inspected as a reference for product storytelling and
+hierarchy, not copied as a visual template. Brain retains its own logo, palette,
+font, imagery, and truthful preview qualifications. The preceding native revision
+is preserved at `prototype-v2-native-reviewed` (`4f873b52`), with its local review
+gallery in `artifacts/review-v2-native/` and its existing offline bundle intact.
+
 Download buttons retain the current production targets. Clicking a download
 can download the real app. The Microsoft Store option remains disabled.
 
@@ -76,7 +89,7 @@ dependencies only; the public site loads no third-party JavaScript or fonts.
 Open `artifacts/review/gallery.html` for the screenshot gallery and
 `artifacts/review/report.json` for source hashes, checks, findings, and limits.
 Coverage includes both platforms at 1440, 768, 390, and 320 pixels; keyboard
-navigation; all walkthrough stages; native focus controls; clipboard fallback;
+navigation; all walkthrough stages; native focus and saved-review controls; clipboard fallback;
 WCAG A/AA checks; reduced motion; forced colors; no JavaScript; blocked storage;
 200% CSS zoom; local routes/fragments; and preserved release destinations.
 

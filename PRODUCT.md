@@ -27,6 +27,9 @@ Microsoft Store option. GitHub Pages serves the static site from public main.
 Keep Brain's original logo and the established bright blue/teal site identity.
 The owner rejected the first prototype's invented UI and requests substantially
 stronger motion, layering, and images faithful to the actual Windows app.
+The subsequent refinement asks for the professional standard of a company like
+Slack: clearer product storytelling, confident hierarchy, and polished interaction
+while preserving Brain's own brand and factual feature boundaries.
 
 ## Evidence on Hand
 

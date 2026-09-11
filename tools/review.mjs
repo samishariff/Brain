@@ -128,6 +128,18 @@ try {
     assert.equal(await page.evaluate(() => getSelection().toString()), 'brain search "release decision" --scope Personal --json');
     await page.evaluate(() => getSelection().removeAllRanges());
   });
+  await check('Saved meeting views use real captures and support keyboard selection', async () => {
+    for (const view of ['summary','actions','chat']) {
+      await page.locator(`[data-outcome="${view}"]`).click();
+      await page.waitForFunction(value => document.querySelector('.outcome-frame').dataset.view === value, view);
+      assert.match(await page.locator('.outcome-frame img').getAttribute('src'), new RegExp(`meeting-${view}-1568`));
+    }
+    await page.locator('[data-outcome="chat"]').focus();
+    await page.keyboard.press('ArrowRight');
+    await page.waitForFunction(() => document.querySelector('.outcome-frame').dataset.view === 'summary');
+    await page.locator('[data-outcome="chat"]').click();
+    await settled(page);
+  });
   for (const platform of ['mac', 'windows']) {
     await check(`${platform}: platform selection, reload, guide navigation, and release links`, async () => {
       await page.locator(`[data-platform-choice="${platform}"]`).click();
@@ -181,6 +193,9 @@ try {
     await page.locator('[data-focus="transcript"]').click();
     await page.waitForFunction(() => document.querySelector('.workspace-stage').dataset.view === 'transcript');
     assert.equal(await page.evaluate(() => document.getAnimations().length), 0);
+    await page.locator('[data-outcome="summary"]').click();
+    await page.waitForFunction(() => document.querySelector('.outcome-frame').dataset.view === 'summary');
+    assert.equal(await page.evaluate(() => document.getAnimations().length), 0);
     await page.locator('#inspect-speak').click();
     await page.waitForFunction(() => document.querySelector('.speak-composition').classList.contains('is-focused'));
     assert.equal(await page.evaluate(() => document.getAnimations().length), 0);
@@ -224,6 +239,8 @@ try {
     assert.equal(await page.locator('#inspect-speak').isVisible(), false);
     assert.equal(await page.locator('.workspace-main img').isVisible(), true);
     assert.equal(await page.locator('.speak-main img').isVisible(), true);
+    assert.equal(await page.locator('.outcome-controls').isVisible(), false);
+    assert.equal(await page.locator('.outcome-links').isVisible(), true);
     await shot(page, 'no-js-home');
     await page.goto(new URL('agents.html', url).href); await ready(page); await reflow(page);
     assert.equal(await page.locator('#mac-export').isVisible(), true);

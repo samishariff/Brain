@@ -112,6 +112,35 @@
       move(composition.querySelector('.speak-main'), [{ transform:'translateY(14px) scale(.98)', opacity:.7 }, { transform:'translateY(0) scale(1)', opacity:1 }]);
     });
   }
+  const outcomeButtons = [...document.querySelectorAll('[data-outcome]')];
+  if (outcomeButtons.length) {
+    document.querySelector('.outcome-controls').hidden = false;
+    const frame = document.querySelector('.outcome-frame');
+    const image = frame.querySelector('img');
+    const views = {
+      chat: { file:'meeting-chat-1568.webp', alt:'Windows meeting review with a generated sample meeting and an actual local-model answer.' },
+      summary: { file:'meeting-summary-1568.webp', alt:'Windows meeting review showing the generated sample summary and its supporting passages.' },
+      actions: { file:'meeting-actions-1568.webp', alt:'Windows meeting review showing decisions and actions from the generated sample meeting.' }
+    };
+    let request = 0;
+    keyboardGroup(outcomeButtons, async button => {
+      const token = ++request;
+      const view = views[button.dataset.outcome];
+      const preload = new Image(); preload.src = `assets/${view.file}`;
+      try { await preload.decode(); } catch { return; }
+      if (token !== request) return;
+      image.src = preload.src; image.alt = view.alt;
+      frame.querySelector('figcaption').firstChild.textContent = button.dataset.outcome === 'chat'
+        ? 'Actual Windows app · generated sample meeting and local-model answer '
+        : 'Actual Windows app · generated sample meeting ';
+      frame.querySelector('.screenshot-link').href = preload.src;
+      frame.querySelector('figcaption a').href = preload.src;
+      frame.dataset.view = button.dataset.outcome;
+      outcomeButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      document.getElementById('outcome-status').textContent = view.alt;
+      move(image, [{clipPath:'inset(0 0 5% 0)',opacity:.7},{clipPath:'inset(0)',opacity:1}]);
+    });
+  }
   document.querySelectorAll('[data-copy]').forEach(button => {
     button.hidden = false;
     button.addEventListener('click', async () => {

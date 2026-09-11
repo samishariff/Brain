@@ -1,7 +1,8 @@
 # Brain homepage revision
 
 Mode: Persuade. Existing static homepage, expanded inside the established bright
-Brain identity. This is the owner's correction to the rejected illustrative prototype.
+Brain identity. The owner now requests a more professional result closer to Slack.
+The native-capture revision is preserved as `prototype-v2-native-reviewed`.
 
 ## Direction
 
@@ -12,10 +13,12 @@ results. Source captures must be verified against current app views.
 
 ## First viewport
 
-Large two-line headline at left, short purpose and platform downloads at right.
-A large authentic Windows app window begins directly beneath, with a genuine
-assistant crop extending its right edge. Keep enough of the app visible within
-the first desktop viewport to identify the native sidebar and meeting workspace.
+Keep the headline, product explanation, and download together on the left.
+Frame the native Windows workspace and genuine assistant detail on a pale teal
+stage to the right. The complete product stage, its controls and sample label
+should fit in the first desktop screen. A useful three-link feature navigation
+follows. Slack's current homepage is a reference for hierarchy and product
+storytelling, not a comp to copy or a source of borrowed brand assets.
 On mobile, stack copy and preserve a readable screenshot detail, with full-frame
 inspection available. No small generic demo card beside an oversized headline.
 
@@ -33,6 +36,9 @@ switches immediately and keeps every focus state available.
 See Brain -> inspect the real meeting workspace -> understand detection and
 speaker memory -> inspect real Speak controls -> connect CLI/agents -> download.
 All original feature requirements remain visible; no false promises of accuracy.
+Use larger supporting typography, confident blue actions, clear section pacing,
+and interactive real screenshots for summary, assistant, and action review.
+The closing download section carries a distinct, generous teal treatment.
 
 ## Reality and provenance
 
