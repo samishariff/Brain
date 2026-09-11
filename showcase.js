@@ -1,96 +1,126 @@
-/* Progressive enhancement: the complete examples remain readable without JS. */
+/* Image inspection, not simulated app operation. Every app image is a native capture. */
 (() => {
   const body = document.body;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const animations = new Set();
+  function move(element, frames, duration = 350) {
+    if (!element || reduced.matches || typeof element.animate !== 'function') return;
+    element.getAnimations().forEach(animation => animation.cancel());
+    const animation = element.animate(frames, { duration, easing:'cubic-bezier(.16,1,.3,1)' });
+    animations.add(animation);
+    animation.finished.catch(() => {}).finally(() => animations.delete(animation));
+  }
+  const stopMotion = () => { animations.forEach(animation => animation.cancel()); animations.clear(); };
+  reduced.addEventListener('change', () => { if (reduced.matches) stopMotion(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopMotion(); });
   const platformButtons = [...document.querySelectorAll('[data-platform-choice]')];
-  const applyPlatform = platform => {
+  function applyPlatform(platform) {
     body.dataset.platform = platform;
     platformButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.platformChoice === platform)));
-  };
+  }
   let saved;
-  try { saved = localStorage.getItem('brain-platform'); } catch { /* Storage is optional. */ }
+  try { saved = localStorage.getItem('brain-platform'); } catch { /* Optional storage. */ }
   const isMac = /Mac|iPhone|iPad/.test(navigator.platform || '') || /Macintosh/.test(navigator.userAgent || '');
-  applyPlatform(['mac', 'windows'].includes(saved) ? saved : isMac ? 'mac' : 'windows');
+  applyPlatform(['mac','windows'].includes(saved) ? saved : isMac ? 'mac' : 'windows');
   platformButtons.forEach(button => button.addEventListener('click', () => {
     applyPlatform(button.dataset.platformChoice);
-    try { localStorage.setItem('brain-platform', button.dataset.platformChoice); } catch { /* Keep the current selection. */ }
+    try { localStorage.setItem('brain-platform', button.dataset.platformChoice); } catch { /* Keep this view. */ }
   }));
-  // Both platforms remain discoverable when scripts are disabled.
   body.classList.add('enhanced');
-  const steps = [...document.querySelectorAll('[data-step]')];
-  const scenes = [...document.querySelectorAll('.demo-scene')];
-  function selectStep(button) {
-    steps.forEach(step => step.setAttribute('aria-pressed', String(step === button)));
-    scenes.forEach(scene => { scene.hidden = scene.id !== button.getAttribute('aria-controls'); });
+  function keyboardGroup(buttons, select) {
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => select(button));
+      button.addEventListener('keydown', event => {
+        let next;
+        if (['ArrowRight','ArrowDown'].includes(event.key)) next = (index + 1) % buttons.length;
+        if (['ArrowLeft','ArrowUp'].includes(event.key)) next = (index + buttons.length - 1) % buttons.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = buttons.length - 1;
+        if (next === undefined) return;
+        event.preventDefault(); buttons[next].focus(); select(buttons[next]);
+      });
+    });
   }
-  steps.forEach((button, index) => {
-    button.addEventListener('click', () => selectStep(button));
-    button.addEventListener('keydown', event => {
-      let next;
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % steps.length;
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index + steps.length - 1) % steps.length;
-      if (event.key === 'Home') next = 0;
-      if (event.key === 'End') next = steps.length - 1;
-      if (next === undefined) return;
-      event.preventDefault();
-      steps[next].focus();
-      selectStep(steps[next]);
+  const scenes = [...document.querySelectorAll('.demo-scene')];
+  const steps = [...document.querySelectorAll('[data-step]')];
+  function selectStep(button, animate = true) {
+    steps.forEach(step => step.setAttribute('aria-pressed', String(step === button)));
+    scenes.forEach(scene => {
+      scene.hidden = scene.id !== button.getAttribute('aria-controls');
+      if (!scene.hidden && animate) move(scene.querySelector('.native-figure img'), [{ clipPath:'inset(0 0 8% 0)', opacity:.55 }, { clipPath:'inset(0 0 0% 0)', opacity:1 }]);
     });
-  });
-  if (steps.length) selectStep(steps[0]);
-
-  const replay = document.getElementById('replay-speak');
-  if (replay) {
-    replay.hidden = false;
-    const draft = document.getElementById('dictation-text');
-    const status = document.getElementById('speak-status');
-    const announcement = document.getElementById('speak-announcement');
-    const visual = document.querySelector('.speak-visual');
-    const text = draft.textContent;
-    const words = text.split(' ');
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-    let timer;
-    const finish = () => {
-      clearInterval(timer);
-      draft.textContent = text;
-      status.textContent = 'Your thought, in words.';
-      visual.classList.remove('is-playing');
-      replay.disabled = false;
-      replay.textContent = '↻ Replay dictation example';
-      announcement.textContent = 'Example complete. ' + text;
+  }
+  keyboardGroup(steps, selectStep);
+  if (steps.length) selectStep(steps[0], false);
+  const workspaceImage = document.getElementById('workspace-image');
+  if (workspaceImage) {
+    const stage = document.querySelector('.workspace-stage');
+    const main = document.querySelector('.workspace-main');
+    const detail = document.querySelector('.workspace-detail');
+    const buttons = [...document.querySelectorAll('[data-focus]')];
+    const views = {
+      workspace:{ file:'windows-live', alt:'The actual Brain Windows workspace with live transcript and assistant. Sample meeting content.', caption:'Actual Windows interface. Sample meeting content.' },
+      transcript:{ file:'windows-transcript-detail', alt:'A readable crop of the actual Windows live transcript.', caption:'Live transcript. Enlarged from the same native capture.' },
+      assistant:{ file:'windows-assistant-detail', alt:'A readable crop of the actual Windows meeting assistant.', caption:'Meeting assistant. Enlarged from the same native capture.' }
     };
-    replay.addEventListener('click', () => {
-      clearInterval(timer);
-      announcement.textContent = '';
-      if (reducedMotion.matches) { finish(); return; }
-      replay.disabled = true;
-      visual.classList.add('is-playing');
-      status.textContent = 'Turning a thought into text…';
-      draft.textContent = '';
-      let count = 0;
-      timer = setInterval(() => {
-        count += 1;
-        draft.textContent = words.slice(0, count).join(' ');
-        if (count >= words.length) finish();
-      }, 160);
+    let selection = 0;
+    async function selectFocus(button) {
+      const current = ++selection;
+      const view = views[button.dataset.focus];
+      const preload = new Image(); preload.src = `assets/${view.file}.png`;
+      try { await preload.decode(); } catch { return; }
+      if (current !== selection) return;
+      stage.dataset.view = button.dataset.focus;
+      workspaceImage.src = preload.src; workspaceImage.alt = view.alt; workspaceImage.dataset.native = view.file;
+      main.href = preload.src; document.getElementById('workspace-full-link').href = preload.src;
+      document.getElementById('workspace-caption').textContent = view.caption;
+      document.getElementById('workspace-status').textContent = view.caption;
+      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      move(main, [{ transform:'translateY(12px) scale(.985)', opacity:.6 }, { transform:'translateY(0) scale(1)', opacity:1 }]);
+    }
+    keyboardGroup(buttons, selectFocus);
+    function entrance() {
+      if (stage.dataset.view !== 'workspace') { selectFocus(buttons[0]); return; }
+      move(main, [{ transform:'rotateX(5deg) translateY(20px)', opacity:.82 }, { transform:'rotateX(0deg) translateY(0)', opacity:1 }], 700);
+      move(detail, [{ transform:'translate(-40px,24px) scale(.96)', opacity:.5 }, { transform:'translate(0,0) scale(1)', opacity:1 }], 800);
+    }
+    const replay = document.getElementById('replay-workspace'); replay.hidden = false; replay.addEventListener('click', entrance);
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) { entrance(); observer.disconnect(); }
+    }, { threshold:.2 });
+    observer.observe(stage);
+  }
+  const speakButton = document.getElementById('inspect-speak');
+  if (speakButton) {
+    speakButton.hidden = false;
+    const composition = document.querySelector('.speak-composition');
+    const image = composition.querySelector('.speak-main img');
+    let request = 0;
+    speakButton.addEventListener('click', async () => {
+      const token = ++request;
+      const focused = !composition.classList.contains('is-focused');
+      const file = focused ? 'windows-speak-detail' : 'windows-speak';
+      const preload = new Image(); preload.src = `assets/${file}.png`;
+      try { await preload.decode(); } catch { return; }
+      if (token !== request) return;
+      composition.classList.toggle('is-focused', focused);
+      image.src = preload.src; image.dataset.native = file;
+      image.alt = focused ? 'Enlarged actual Windows Speak dictation history.' : 'The actual Windows Brain Speak screen.';
+      image.parentElement.href = preload.src; speakButton.setAttribute('aria-pressed', String(focused));
+      speakButton.lastChild.textContent = focused ? ' Show the complete Speak window' : ' Focus on dictation history';
+      document.getElementById('speak-announcement').textContent = focused ? 'Showing the captured dictation history detail.' : 'Showing the complete captured Speak screen.';
+      move(composition.querySelector('.speak-main'), [{ transform:'translateY(14px) scale(.98)', opacity:.7 }, { transform:'translateY(0) scale(1)', opacity:1 }]);
     });
-    reducedMotion.addEventListener('change', () => { if (reducedMotion.matches && replay.disabled) finish(); });
-    document.addEventListener('visibilitychange', () => { if (document.hidden && replay.disabled) finish(); });
   }
   document.querySelectorAll('[data-copy]').forEach(button => {
     button.hidden = false;
     button.addEventListener('click', async () => {
       const target = document.getElementById(button.dataset.copy);
       const status = document.getElementById('copy-status');
-      try {
-        await navigator.clipboard.writeText(target.textContent);
-        button.textContent = 'Copied';
-        if (status) status.textContent = 'Command copied.';
-      } catch {
-        const range = document.createRange();
-        range.selectNodeContents(target);
-        const selection = getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
+      try { await navigator.clipboard.writeText(target.textContent); button.textContent = 'Copied'; if (status) status.textContent = 'Command copied.'; }
+      catch {
+        const range = document.createRange(); range.selectNodeContents(target);
+        const selection = getSelection(); selection.removeAllRanges(); selection.addRange(range);
         button.textContent = 'Select & copy';
         if (status) status.textContent = 'Command selected. Use your keyboard or context menu to copy it.';
       }

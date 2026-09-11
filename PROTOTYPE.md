@@ -23,10 +23,10 @@ Suggested review:
 1. Switch between Mac and Windows, then reload. Check the selected download
    and platform-specific explanations.
 2. Select each of the three meeting stages. Tab, Enter, and arrow keys work.
-3. Review the speaker-memory story and the real app screenshot; the screenshot
-   opens full size, and the summary/actions links open real app details.
-4. Replay Speak. The fictional message fills in without microphone access,
-   audio playback, or text insertion into another application.
+3. Use Workspace, Transcript, and Assistant to inspect the native Windows
+   capture. Replay its layered entrance; open any capture at full size.
+4. Review voice memory and Speak. Focus on dictation history to inspect a
+   genuine crop. The floating Listening pill is the actual Windows control.
 5. Copy the CLI example and follow **Connect your tools**. Switch platforms in
    the guide to see the appropriate launch and export commands.
 6. Review the page at a narrow phone width and with reduced motion enabled.
@@ -34,9 +34,32 @@ Suggested review:
 Download buttons retain the current production targets. Clicking a download
 can download the real app. The Microsoft Store option remains disabled.
 
-All product illustrations use fictional content and are labelled as examples.
-Screenshots depict the real apps. Meeting detection, voice recognition, and
-dictation examples are website demonstrations, not running app integrations.
+All application visuals are native captures, with sample content clearly
+identified. There are no recreated HTML app controls, fake transcript playback,
+invented assistant output in website code, or simulated cross-app insertion.
+The website animates image presentation, not a running app. See
+`screenshots.html` for the public explanation of the capture method and limits.
+
+The new captures use Windows source `7dd614a9e383ba4a565b6755fe41dd753b4b93d8`.
+Production UI code was unchanged; a capture-only test orchestration overlay
+seeded meeting content, voice review, assistant text, recording health/timer,
+Speak history, and Listening state on an isolated desktop/profile. These images
+prove the native appearance, not successful live calls, ASR, or text insertion.
+The older saved-review image retains its generated sample meeting and actual
+local-model answer. Development captures may differ from the downloadable preview.
+
+`tools/native-captures.json` records source hashes, crop rectangles, and final
+asset hashes. `tools/Import-NativeCaptures.ps1` reproduces the imports from the
+local `artifacts/native-capture-v2` receipts. PNG origins are embedded; unchanged
+legacy WebP files carry origin sidecars. Private capture fixtures stay out of
+the public bundle. The rejected first prototype remains tagged
+`prototype-v1-reviewed` for easy local comparison.
+
+This revision applies [Impeccable](https://github.com/pbakaus/impeccable),
+version 4.3.1 at `cb56ed6c19a07329a9fa0cd4e657bee040156593`: real artifacts lead,
+native details create the depth, typography carries the hierarchy, and motion
+serves image inspection. `PRODUCT.md`, `.impeccable/surface-brief.md`, and
+`DESIGN.md` preserve product facts and the implemented design system.
 
 ## Verification and evidence
 
@@ -53,7 +76,7 @@ dependencies only; the public site loads no third-party JavaScript or fonts.
 Open `artifacts/review/gallery.html` for the screenshot gallery and
 `artifacts/review/report.json` for source hashes, checks, findings, and limits.
 Coverage includes both platforms at 1440, 768, 390, and 320 pixels; keyboard
-navigation; all walkthrough stages; dictation replay; clipboard fallback;
+navigation; all walkthrough stages; native focus controls; clipboard fallback;
 WCAG A/AA checks; reduced motion; forced colors; no JavaScript; blocked storage;
 200% CSS zoom; local routes/fragments; and preserved release destinations.
 
@@ -144,7 +167,8 @@ powershell -NoProfile -File tools/Stage-Distribution.ps1 -ApplicationRepository 
 
 The adapter creates a fresh fixture beneath `artifacts/`, preserving the
 application generator's release substitutions. It stages the complete site,
-adds the reviewed local JavaScript asset type, updates the public repository
+adds the reviewed local JavaScript asset type and validated WebP origin sidecars,
+updates the public repository
 binding to `samishariff/Brain`, and regenerates the hashed baseline. It runs the
 existing generator in Holding, LocalPreview, and Release modes and verifies the
 new features, scripts, guide, Store setting, and Mac download survive.

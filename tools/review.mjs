@@ -16,7 +16,7 @@ const check = async (name, action) => {
   try { await action(); checks.push({ name, passed: true }); console.log('PASS ' + name); }
   catch (error) { findings.push({ name, error: error.message }); console.error('FAIL ' + name + ': ' + error.message); }
 };
-const tracked = ['index.html', 'agents.html', 'showcase.css', 'showcase.js', 'style.css', 'windows-store.js'];
+const tracked = ['index.html', 'agents.html', 'screenshots.html', 'showcase.css', 'showcase.js', 'style.css', 'windows-store.js', 'tools/native-captures.json'];
 const sourceHashes = Object.fromEntries(await Promise.all(tracked.map(async file => [file, createHash('sha256').update(await readFile(path.join(root, file))).digest('hex')])));
 async function context(options = {}) {
   const ctx = await browser.newContext(options);
@@ -41,6 +41,9 @@ async function ready(page) {
     await Promise.all(images.map(image => image.decode().catch(() => {})));
   });
 }
+async function settled(page) {
+  await page.evaluate(() => Promise.all(document.getAnimations().map(animation => animation.finished.catch(() => {}))));
+}
 async function shot(page, name, fullPage = true) {
   const file = `${name}.png`;
   if (fullPage) {
@@ -54,6 +57,7 @@ async function shot(page, name, fullPage = true) {
     await page.evaluate(() => scrollTo(0, 0));
     await page.waitForTimeout(40);
   }
+  await settled(page);
   await page.screenshot({ path: path.join(output, file), fullPage });
   shots.push(file);
 }
@@ -79,6 +83,7 @@ try {
       await page.locator(`[data-step="${stage}"]`).click();
       assert.equal(await page.locator(`#scene-${stage}`).isVisible(), true);
       assert.equal(await page.locator('.demo-scene:visible').count(), 1);
+      await settled(page);
       await page.locator('#inside-brain').screenshot({ path: path.join(output, `walkthrough-${stage}.png`) });
       shots.push(`walkthrough-${stage}.png`);
     }
@@ -89,13 +94,30 @@ try {
     assert.equal(await page.locator('[data-step="detect"]').getAttribute('aria-pressed'), 'true');
     assert.notEqual(await page.locator('[data-step="detect"]').evaluate(el => getComputedStyle(el).outlineStyle), 'none');
   });
-  await check('Speak replay completes, can replay, and never requests microphone access', async () => {
-    await page.locator('#replay-speak').click();
-    await page.waitForFunction(() => !document.getElementById('replay-speak').disabled);
+  await check('Native workspace focus, rapid selection, and Speak image inspection', async () => {
+    for (const focus of ['transcript','assistant','workspace']) {
+      await page.locator(`[data-focus="${focus}"]`).click();
+      await page.waitForFunction(value => document.querySelector('.workspace-stage').dataset.view === value, focus);
+      await settled(page);
+      await page.locator('#workspace').screenshot({path:path.join(output,`native-focus-${focus}.png`)});
+      shots.push(`native-focus-${focus}.png`);
+    }
+    await page.evaluate(() => {
+      document.querySelector('[data-focus="assistant"]').click();
+      document.querySelector('[data-focus="transcript"]').click();
+    });
+    await page.waitForFunction(() => document.querySelector('.workspace-stage').dataset.view === 'transcript');
+    await page.locator('[data-focus="workspace"]').click();
+    await page.waitForFunction(() => document.querySelector('.workspace-stage').dataset.view === 'workspace');
+    await page.locator('#replay-workspace').click();
+    assert.ok(await page.evaluate(() => document.querySelector('.workspace-main').getAnimations().length > 0));
+    await page.locator('#inspect-speak').click();
+    await page.waitForFunction(() => document.querySelector('.speak-composition').classList.contains('is-focused'));
+    assert.match(await page.locator('.speak-main img').getAttribute('src'), /windows-speak-detail/);
+    await page.locator('#inspect-speak').click();
+    await page.waitForFunction(() => !document.querySelector('.speak-composition').classList.contains('is-focused'));
     assert.equal(await page.evaluate(() => window.microphoneRequests), 0);
-    assert.match(await page.locator('#dictation-text').textContent(), /next Friday/);
-    await page.locator('#replay-speak').click();
-    await page.waitForFunction(() => !document.getElementById('replay-speak').disabled);
+    await settled(page);
     await page.locator('#speak').screenshot({ path: path.join(output, 'speak-desktop.png') }); shots.push('speak-desktop.png');
   });
   await check('Copy command and clipboard fallback', async () => {
@@ -143,17 +165,25 @@ try {
   await check('200% layout enlargement and forced-colors mode', async () => {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.evaluate(() => { document.documentElement.style.zoom = '2'; });
-    await reflow(page); await shot(page, 'zoom-200');
-    await page.evaluate(() => { document.documentElement.style.zoom = ''; });
+    try {
+      await reflow(page); await shot(page, 'zoom-200');
+      await page.locator('#inspect-speak').click();
+      await page.waitForFunction(() => document.querySelector('.speak-composition').classList.contains('is-focused'));
+      await page.locator('#inspect-speak').click();
+      await page.waitForFunction(() => !document.querySelector('.speak-composition').classList.contains('is-focused'));
+    } finally { await page.evaluate(() => { document.documentElement.style.zoom = ''; }); }
     await page.emulateMedia({ forcedColors: 'active' }); await shot(page, 'forced-colors', false);
     await page.emulateMedia({ forcedColors: 'none' });
   });
-  await check('Reduced motion: immediate Speak result and no animation', async () => {
+  await check('Reduced motion: focus controls preserve meaning without movement', async () => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.locator('#replay-speak').click();
-    assert.equal(await page.locator('#replay-speak').isDisabled(), false);
-    assert.match(await page.locator('#dictation-text').textContent(), /next Friday/);
-    assert.equal(await page.locator('.speak-pill .wave i').first().evaluate(el => getComputedStyle(el).animationName), 'none');
+    await page.locator('#replay-workspace').click();
+    await page.locator('[data-focus="transcript"]').click();
+    await page.waitForFunction(() => document.querySelector('.workspace-stage').dataset.view === 'transcript');
+    assert.equal(await page.evaluate(() => document.getAnimations().length), 0);
+    await page.locator('#inspect-speak').click();
+    await page.waitForFunction(() => document.querySelector('.speak-composition').classList.contains('is-focused'));
+    assert.equal(await page.evaluate(() => document.getAnimations().length), 0);
   });
   await check('Local route crawl, fragments, decoded images, and guide accessibility', async () => {
     const queue = ['index.html', 'agents.html', 'help/', 'privacy/'], seen = new Set();
@@ -191,8 +221,9 @@ try {
     const ctx = await context({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
     const page = await ctx.newPage(); await page.goto(url); await ready(page); await reflow(page);
     assert.equal(await page.locator('.demo-scene:visible').count(), 3);
-    assert.equal(await page.locator('#replay-speak').isVisible(), false);
-    assert.match(await page.locator('#dictation-text').textContent(), /next Friday/);
+    assert.equal(await page.locator('#inspect-speak').isVisible(), false);
+    assert.equal(await page.locator('.workspace-main img').isVisible(), true);
+    assert.equal(await page.locator('.speak-main img').isVisible(), true);
     await shot(page, 'no-js-home');
     await page.goto(new URL('agents.html', url).href); await ready(page); await reflow(page);
     assert.equal(await page.locator('#mac-export').isVisible(), true);
@@ -221,6 +252,18 @@ try {
       const baselineContent = execFileSync('git', ['show', `${baseline.commit}:${file}`], { cwd: root });
       assert.equal((await readFile(path.join(root, file), 'utf8')).replaceAll('\r\n','\n'), baselineContent.toString('utf8').replaceAll('\r\n','\n'), file);
     }
+  });
+  await check('Native capture provenance and absence of invented app UI', async () => {
+    const manifest = JSON.parse(await readFile(path.join(root, 'tools/native-captures.json')));
+    assert.match(manifest.method, /Native WinUI/);
+    for (const item of manifest.files) {
+      const bytes = await readFile(path.join(root, 'assets', item.file));
+      assert.equal(createHash('sha256').update(bytes).digest('hex'), item.sha256, item.file);
+      assert.ok(item.sourceSha256 && item.origin.includes('No redraw'));
+    }
+    const html = await readFile(path.join(root, 'index.html'), 'utf8');
+    for (const banned of ['class="notification"','class="draft-window"','class="memory-card"','class="transcript-turn"','Illustrative result']) assert.equal(html.includes(banned), false, banned);
+    assert.ok(html.includes('About these screenshots'));
   });
 } finally {
   await browser.close(); await new Promise(resolve => server.close(resolve));

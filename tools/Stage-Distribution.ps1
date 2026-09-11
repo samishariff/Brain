@@ -27,6 +27,19 @@ $distributionScript = [IO.File]::ReadAllText($distributionScriptPath)
 if (!$distributionScript.Contains("@('.html', '.css', '.svg'")) { throw 'Application asset allowlist changed. Review the integration before staging.' }
 # The baseline hashes cover these local scripts just as they cover other assets.
 $distributionScript = $distributionScript.Replace("@('.html', '.css', '.svg'", "@('.html', '.css', '.js', '.svg'")
+# Only image-origin sidecars are added to the private renderer's allowlist.
+# Validate their schema and paired image before copying the reviewed template.
+$sidecarGuard = '$template.Extension -notin $publicExtensions -and'
+if (!$distributionScript.Contains($sidecarGuard)) { throw 'Application sidecar guard changed. Review integration.' }
+$distributionScript = $distributionScript.Replace($sidecarGuard, '$template.Extension -notin $publicExtensions -and $template.Name -notlike ''*.webp.json'' -and')
+foreach ($sidecar in @(Get-ChildItem -LiteralPath (Join-Path $siteRoot 'assets') -Filter '*.webp.json' -File)) {
+    $origin = Get-Content -LiteralPath $sidecar.FullName -Raw | ConvertFrom-Json
+    if (@($origin.PSObject.Properties.Name | Where-Object { $_ -notin @('prompt','createdAt') }).Count -or
+        !$origin.prompt.StartsWith('Origin: existing reviewed Brain public website asset at samishariff/Brain commit ') -or
+        !(Test-Path -LiteralPath ($sidecar.FullName -replace '\.json$',''))) {
+        throw "Unreviewed image provenance: $($sidecar.Name)"
+    }
+}
 [IO.File]::WriteAllText($distributionScriptPath, $distributionScript, [Text.UTF8Encoding]::new($false))
 . $distributionScriptPath
 $templateRoot = Join-Path $stage 'distribution/site'
@@ -76,7 +89,7 @@ foreach ($mode in @('Holding','LocalPreview','Release')) {
     foreach ($id in @('inside-brain','memory','outcomes','speak','agents')) {
         if (!$rendered.Contains('id="' + $id + '"')) { throw "Feature lost during $mode rendering: $id" }
     }
-    foreach ($asset in @('showcase.css','showcase.js','windows-store.js','agents.html')) {
+    foreach ($asset in @('showcase.css','showcase.js','windows-store.js','agents.html','screenshots.html')) {
         if ((Get-FileHash -LiteralPath (Join-Path $render $asset)).Hash -ne (Get-FileHash -LiteralPath (Join-Path $siteRoot $asset)).Hash) { throw "Asset changed during render: $asset" }
     }
     if (!$rendered.Contains('data-approved="false"')) { throw 'The disabled Store option changed.' }
