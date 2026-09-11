@@ -45,14 +45,14 @@ async function shot(page, name, fullPage = true) {
   const file = `${name}.png`;
   if (fullPage) {
     // Chromium may defer rasterizing decoded offscreen images until they enter view.
-    await page.evaluate(async () => {
-      for (let y = 0; y < document.documentElement.scrollHeight; y += innerHeight) {
-        scrollTo(0, y);
-        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-      }
-      scrollTo(0, 0);
-      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-    });
+    const { height, viewport } = await page.evaluate(() => ({ height: document.documentElement.scrollHeight, viewport: innerHeight }));
+    for (let y = 0; y < height; y += viewport) {
+      await page.evaluate(position => scrollTo(0, position), y);
+      // Let the compositor paint; requestAnimationFrame is disabled in no-JS contexts.
+      await page.waitForTimeout(40);
+    }
+    await page.evaluate(() => scrollTo(0, 0));
+    await page.waitForTimeout(40);
   }
   await page.screenshot({ path: path.join(output, file), fullPage });
   shots.push(file);
