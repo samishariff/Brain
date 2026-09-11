@@ -24,7 +24,7 @@ Delivered on September 11, 2026:
 - The homepage presents the corresponding Mac or Windows imagery and copy when a
   visitor chooses a platform; both layouts and interactions are covered by
   `npm test` and were reviewed at 1440, 768, 390 and 320 pixels.
-- Public `main` was merged (Windows 1.0.3.13 download and notes) with a
+- Public `main` was merged (Windows 1.0.3.13, then 1.0.3.14, download and notes) with a
   two-parent merge, and `tools/release-baseline.json` now names that commit.
 
 Still required before publication: the owner's approval, then the distribution

@@ -13,7 +13,7 @@ Windows PC. See the actual app, including its meeting assistant, on the
 (macOS 26 or later, Apple silicon). The Mac app is a signed, notarized disk
 image; the installed app updates itself from the public release channel.
 
-**Brain for Windows preview 1.0.3.13 is available** from the [Brain website](https://samishariff.github.io/Brain/). Read the [preview notes](https://samishariff.github.io/Brain/release-notes.html) before installing. Physical microphones, live calls, device changes and sleep/wake behavior remain unverified for this preview.
+**Brain for Windows preview 1.0.3.14 is available** from the [Brain website](https://samishariff.github.io/Brain/). Read the [preview notes](https://samishariff.github.io/Brain/release-notes.html) before installing. Physical microphones, live calls, device changes and sleep/wake behavior remain unverified for this preview.
 
 - [Mac setup](https://samishariff.github.io/Brain/mac.html)
 - [Getting started on Windows](https://samishariff.github.io/Brain/help.html)
