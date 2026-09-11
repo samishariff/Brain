@@ -149,7 +149,7 @@
 .draft-body { padding: 24px 26px 62px; min-height: 225px; }
 .draft-body p { font-size: 14px; line-height: 1.8; margin-bottom: 16px; }
 .draft-cursor { display: block; width: 1px; height: 18px; background: #7992a8; }
-.speak-pill { position: absolute; bottom: -19px; left: 50%; transform: translateX(-50%); white-space: nowrap; display: flex; align-items: center; gap: 14px; padding: 8px 16px 8px 10px; border: 1px solid #ccd9e0; border-radius: 30px; background: #fff; box-shadow: 0 8px 22px #233b5d16; }
+.speak-pill { position: absolute; bottom: -19px; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 24px); white-space: nowrap; display: flex; align-items: center; gap: 14px; padding: 8px 16px 8px 10px; border: 1px solid #ccd9e0; border-radius: 30px; background: #fff; box-shadow: 0 8px 22px #233b5d16; }
 .speak-pill > span { font-size: 10px; font-weight: 650; }
 .speak-pill .wave { height: 26px; gap: 3px; }
 .speak-pill .wave i { width: 2px; max-height: 22px; }
