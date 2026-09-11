@@ -37,13 +37,25 @@ Existing public screenshots are actual Windows/Mac app pixels with sample
 content. Private native UI acceptance captures can demonstrate actual controls
 but seeded UI state does not prove live capture or recognition performance.
 Source views and capture receipts are available for checking screenshot freshness.
+The Mac set (`assets/mac-*.png`, `tools/native-captures-mac.json`) was captured
+on September 11, 2026 from a development build of the Brain 0.2.59 source in
+dark appearance: recording a call with the live transcript and meeting helper,
+Settings › Recording, Review › Transcript with named speakers, People › Review,
+Review › Report, an approved record with commitments, Actions, Settings › Speak,
+the Speak History panel, and the listening capsule. Mac facts used in copy:
+signed and notarized disk image, macOS 26 (Tahoe) or later on Apple silicon,
+call detection asks first by default, the Speak shortcut is the user's choice,
+and People › Review offers the suggested name, Me, Someone else, Not a voice,
+and Skip.
 No fabricated testimonials, customer counts, performance metrics, or UI chrome.
 
 ## Product Principles
 
 - Show the actual app and keep all visible controls and content intact.
 - Clearly label samples and distinguish UI inspection from running the product.
-- Preserve platform-specific reality and keep preview limits findable.
+- Preserve platform-specific reality and keep preview limits findable. A visitor
+  who chooses Mac sees only Mac captures and copy; a Windows visitor sees only
+  Windows captures and copy.
 - The full prototype must be reviewed before any public deployment.
 - Preserve source snapshots and a tested, guarded rollback path.
 

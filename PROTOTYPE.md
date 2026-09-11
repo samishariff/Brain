@@ -5,25 +5,62 @@ public site is `https://samishariff.github.io/Brain/`, deployed by GitHub Pages
 from the root of `samishariff/Brain`'s `main` branch. Do not merge or push to that
 branch until the owner approves the exact reviewed prototype revision.
 
-## Draft PR hold: Mac screenshots required
+## Draft PR hold: Mac side delivered, owner approval pending
 
 The owner approved preserving this direction in a draft PR, not publishing it.
-Keep the PR in draft and do not merge, enable auto-merge, or deploy until:
+Keep the PR in draft and do not merge, enable auto-merge, or deploy until the
+owner reviews and explicitly approves the complete Mac/Windows candidate.
 
-- Equivalent current native Mac captures cover meeting detection, live
-  transcription, the meeting assistant, speaker review and remembered voices,
-  saved meeting review, and Speak including its floating indicator.
-- Mac captures retain their source/version receipts and clearly label sample
-  content and staged states, following the Windows provenance standard.
-- The website presents the corresponding Mac and Windows imagery when a visitor
-  chooses a platform; review the layouts and interactions for both.
-- Reconcile any newer release/download changes on public `main`, then rerun
-  browser checks, distribution staging, and rollback rehearsal for the candidate.
-- The owner reviews and explicitly approves the complete Mac/Windows candidate
-  for publication.
+Delivered on September 11, 2026:
 
-A feature-branch push backs up the work. GitHub Pages currently publishes only
-`main` at the repository root, so this draft PR does not update the public site.
+- Native Mac captures cover meeting detection (Settings › Recording), live
+  transcription and the meeting helper (Record during a call), speaker review
+  (Review › Transcript), remembered voices (People › Review), saved meeting
+  review (Review › Report, an approved record, Actions), and Speak including its
+  floating capsule and the Speak History panel.
+- Mac captures carry the same provenance standard as the Windows set: source
+  commit and app version, capture receipt hashes, exact pixel crops, output
+  hashes, and an embedded-style origin sentence in `tools/native-captures-mac.json`.
+- The homepage presents the corresponding Mac or Windows imagery and copy when a
+  visitor chooses a platform; both layouts and interactions are covered by
+  `npm test` and were reviewed at 1440, 768, 390 and 320 pixels.
+- Public `main` was merged (Windows 1.0.3.13 download and notes) with a
+  two-parent merge, and `tools/release-baseline.json` now names that commit.
+
+Still required before publication: the owner's approval, then the distribution
+staging and rollback rehearsal on the final candidate.
+
+GitHub Pages currently publishes only `main` at the repository root, so this
+draft PR does not update the public site.
+
+## Mac capture pipeline
+
+The Mac captures come from the Brain Dev bundle built from the private
+Shariff-Brain repository at the commit named in
+`artifacts/native-capture-mac/capture-provenance.json` (the v0.2.59 source),
+launched through that repository's `scripts/ui-launch.sh` under the QA harness:
+a scratch home (`CFFIXED_USER_HOME`), stub capture (`BRAIN_STUB_CAPTURE=1`,
+`BRAIN_NO_HAL=1`, `BRAIN_DISABLE_PIPELINE=1`), the `full` sample-data profile,
+dark appearance (`BRAIN_UI_APPEARANCE=dark`) and Comfortable text size. Each
+screen was staged with the app's own harness flags (`BRAIN_STUB_RECORDING=zoom`
+and `BRAIN_UI_LIVE_ASSISTANT=1` for the live call, `BRAIN_UI_SPEAK_PHASE=listening`
+for the capsule) and its own controls through the Accessibility API, then
+captured by window id with `screencapture -l` at 2×. The seeded meeting was
+given placeholder audio tracks so the players show real durations, and two
+voices were assigned through People › Review before the transcript capture.
+Nothing was drawn, recoloured or relabelled.
+
+To regenerate the assets from the retained originals:
+
+```sh
+node tools/import-mac-captures.mjs            # reads artifacts/native-capture-mac/
+```
+
+`tools/mac-capture-crops.json` defines the crops; `tools/crop-png.swift`
+performs them pixel-exactly (compiled on first use with the Xcode command-line
+tools). The importer verifies every original against the capture receipt and
+rewrites `tools/native-captures-mac.json` only. The Windows manifest and its
+PowerShell importer are untouched.
 
 ## Speaker screenshot refresh
 
@@ -80,11 +117,11 @@ Clipboard behavior depends on the browser; a selection fallback is included.
 
 Suggested review:
 
-1. Switch between Mac and Windows, then reload. Check the selected download
-   and platform-specific explanations.
+1. Switch between Mac and Windows, then reload. Every capture, caption and
+   explanation follows the choice; the download block does too.
 2. Select each of the three meeting stages. Tab, Enter, and arrow keys work.
-3. Use Workspace, Transcript, and Assistant to inspect the native Windows
-   capture. Replay its layered entrance; open any capture at full size.
+3. Use Workspace, Transcript, and Helper (Assistant on Windows) to inspect the
+   native capture. Replay its layered entrance; open any capture at full size.
 4. Review voice memory and Speak. Focus on dictation history to inspect a
    genuine crop. The floating Listening pill is the actual Windows control.
 5. Copy the CLI example and follow **Connect your tools**. Switch platforms in
@@ -142,16 +179,24 @@ npm test
 ```
 
 Tests use headless Microsoft Edge by default. Set `BRAIN_WEBSITE_BROWSER` to a
-Chromium executable or `BRAIN_WEBSITE_BROWSER_CHANNEL` to `chrome` to override.
+Chromium executable or `BRAIN_WEBSITE_BROWSER_CHANNEL` to `chrome` to override
+(on a Mac without Edge: `BRAIN_WEBSITE_BROWSER_CHANNEL=chrome npm test`). The
+report records the channel used.
 Browser installation is not automatic. `npm ci` installs the pinned development
 dependencies only; the public site loads no third-party JavaScript or fonts.
 
 Open `artifacts/review/gallery.html` for the screenshot gallery and
 `artifacts/review/report.json` for source hashes, checks, findings, and limits.
 Coverage includes both platforms at 1440, 768, 390, and 320 pixels; keyboard
-navigation; all walkthrough stages; native focus and saved-review controls; clipboard fallback;
-WCAG A/AA checks; reduced motion; forced colors; no JavaScript; blocked storage;
-200% CSS zoom; local routes/fragments; and preserved release destinations.
+navigation; all walkthrough stages, native focus, Speak and saved-review controls
+for each platform; a platform switch mid-inspection; an isolation check that no
+image, capture link, alt text, caption or control label of the other platform is
+visible; a download check that the unselected platform's captures are never
+requested; clipboard fallback; WCAG A/AA checks; reduced motion; forced colors;
+no JavaScript (both platforms readable); blocked storage; 200% CSS zoom; local
+routes/fragments; preserved release destinations; provenance hashes for both
+capture manifests plus every Mac and Windows PNG the pages reference; and a
+pixel comparison of every cropped Mac asset against its full-frame twin.
 
 The review exercises the website in Chromium/Edge. It does not certify app
 features, native Safari/Firefox rendering, or physical microphones.

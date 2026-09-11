@@ -1,6 +1,14 @@
 /* Brain website. Native app screenshots remain unmodified source pixels. */
 .native-showcase { container:brain-site / inline-size; --ink:#172f3e; --muted:#4d636d; --blue:#155fd1; --teal:#086f74; --paper:#fff; --line:#d5dfdc; background:var(--paper); color:var(--ink); }
 [hidden] { display:none!important; }
+/* Paired platform captures. Both stories ship in the HTML; the visitor's choice hides one.
+   Without JavaScript the gate never closes and both platforms stay readable. */
+.native-showcase div[data-for] { display:contents; }
+.native-showcase.js[data-platform="mac"] [data-for="windows"], .native-showcase.js[data-platform="windows"] [data-for="mac"] { display:none!important; }
+.native-showcase.js .if-no-js { display:none; }
+.native-showcase:not(.js) [data-for="windows"] .outcome-links { margin-top:24px; }
+.native-showcase:not(.js) .closing-links [data-for] { display:contents; }
+[data-for="mac"] .workspace-main img { aspect-ratio:2800/1718; }
 .native-showcase *, .agent-guide * { box-sizing:border-box; }
 .native-showcase .wrap { width:calc(100% - 96px); max-width:1248px; }
 .native-showcase ::selection { color:#103d42; background:#bfe7df; }

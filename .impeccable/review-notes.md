@@ -1,5 +1,21 @@
 # Brain prototype review
 
+## Mac side (September 11, 2026)
+
+The homepage now tells the same story for both platforms. Fifteen native Mac
+captures (dark appearance, development build of the 0.2.59 source, seeded sample
+profile in a scratch home, window-id captures at 2×, pixel-only crops) pair with
+the existing Windows set through `[data-for]` wrappers; the platform choice hides
+the other platform, lazy loading keeps its files off the wire, and the shared
+inspection controls re-render on a switch. `tools/review.mjs` gained per-platform
+suites, an isolation check for leaked images, links and words, a download
+isolation check, and provenance for both manifests. `screenshots.html` documents
+both capture methods. `mac.html` is unchanged: its download metadata is current
+and the preservation check pins it; refreshing its hero to the new set is a
+follow-up. Visible Windows copy, captures and provenance are byte-identical to the
+previous revision; two control-group labels that named Windows ("Inspect the
+Windows workspace", "Explore the Windows meeting features") became neutral.
+
 ## Professional refinement
 
 The owner requested a more professional result closer to Slack. Slack's live

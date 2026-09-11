@@ -6,7 +6,7 @@ The native-capture revision is preserved as `prototype-v2-native-reviewed`.
 
 ## Direction
 
-The actual Windows workspace is the main visual artifact. Real native windows
+The actual workspace for the visitor's platform is the main visual artifact. Real native windows
 and readable detail crops create the layers. Website chrome stays quiet. Remove
 invented application UI, decorative section numbers, eyebrows, and fake terminal
 results. Source captures must be verified against current app views.
@@ -14,8 +14,8 @@ results. Source captures must be verified against current app views.
 ## First viewport
 
 Keep the headline, product explanation, and download together on the left.
-Frame the native Windows workspace and genuine assistant detail on a pale teal
-stage to the right. The complete product stage, its controls and sample label
+Frame the native workspace for the chosen platform and its genuine helper or
+assistant detail on a pale teal stage to the right. The complete product stage, its controls and sample label
 should fit in the first desktop screen. A useful three-link feature navigation
 follows. Slack's current homepage is a reference for hierarchy and product
 storytelling, not a comp to copy or a source of borrowed brand assets.
@@ -50,8 +50,8 @@ Record origin, build/source receipt, crop coordinates, and output hashes.
 ## Scope and handoff
 
 Preserve platform downloads, setup/privacy routes, static hosting, preview-only
-status, and the guarded rollback tooling. Fresh Windows captures may lead even
-when Mac download is selected, but every displayed platform is named explicitly.
+status, and the guarded rollback tooling. Each platform choice shows only that platform's captures and copy; every
+displayed platform is named explicitly, and no-JavaScript visitors see both.
 Finish with one combined desktop/mobile inspection, one correction batch, and
 one confirming round. Independent finish review uses this brief and the owner's
 rejection as primary acceptance criteria.

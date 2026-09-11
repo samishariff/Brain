@@ -1,0 +1,200 @@
+{
+  "platform": "mac",
+  "sourceCommit": "cf3b1ba3",
+  "appVersion": "0.2.59",
+  "capturedUtc": "2026-09-11T14:52:59.064Z",
+  "method": "Native SwiftUI render of the Brain Dev bundle; macOS window capture at 2x; unchanged production controls; pixel-only crops",
+  "sampleContent": "Meetings, transcript passages, helper answer, voice assessments, Speak history and the listening capsule are seeded demonstration data in a scratch home. These captures do not prove live ASR, calls, inference, or text insertion.",
+  "files": [
+    {
+      "file": "mac-live.png",
+      "source": "record-live-helper.png",
+      "sourceSha256": "789aa1a9b71f6c9cdc67600dbbc5554c6f6ef09f06a556118f680d2c00c19f44",
+      "crop": null,
+      "width": 2800,
+      "height": 1718,
+      "sha256": "789aa1a9b71f6c9cdc67600dbbc5554c6f6ef09f06a556118f680d2c00c19f44",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), record-live-helper.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    },
+    {
+      "file": "mac-transcript-detail.png",
+      "source": "record-live-helper.png",
+      "sourceSha256": "789aa1a9b71f6c9cdc67600dbbc5554c6f6ef09f06a556118f680d2c00c19f44",
+      "crop": [
+        497,
+        462,
+        1064,
+        1232
+      ],
+      "width": 1064,
+      "height": 1232,
+      "sha256": "9956bc8f8568a55aec1323d4c60bfaabf799e3b5cb02b47341f4ee6dee4cd516",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), record-live-helper.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls. Pixel crop x,y,width,height=497,462,1064,1232."
+    },
+    {
+      "file": "mac-assistant-detail.png",
+      "source": "record-live-helper.png",
+      "sourceSha256": "789aa1a9b71f6c9cdc67600dbbc5554c6f6ef09f06a556118f680d2c00c19f44",
+      "crop": [
+        1579,
+        420,
+        1200,
+        1274
+      ],
+      "width": 1200,
+      "height": 1274,
+      "sha256": "896a706cd57300d0ed8a950869c4c06daceeb62f5099578cf25b6165ee41225d",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), record-live-helper.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls. Pixel crop x,y,width,height=1579,420,1200,1274."
+    },
+    {
+      "file": "mac-detection-full.png",
+      "source": "settings-recording.png",
+      "sourceSha256": "d8df4b17ecddee4a16bb12d5bb062c6b1b3e0fae4ceddfaa8fb2f131e2fe2010",
+      "crop": null,
+      "width": 2800,
+      "height": 1718,
+      "sha256": "d8df4b17ecddee4a16bb12d5bb062c6b1b3e0fae4ceddfaa8fb2f131e2fe2010",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), settings-recording.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    },
+    {
+      "file": "mac-detection.png",
+      "source": "settings-recording.png",
+      "sourceSha256": "d8df4b17ecddee4a16bb12d5bb062c6b1b3e0fae4ceddfaa8fb2f131e2fe2010",
+      "crop": [
+        1162,
+        140,
+        1410,
+        250
+      ],
+      "width": 1410,
+      "height": 250,
+      "sha256": "760d7115dca59bcf488745e294b0aa2aa375ccb6dc9b60e3646cc6092c460fa0",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), settings-recording.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls. Pixel crop x,y,width,height=1162,140,1410,250."
+    },
+    {
+      "file": "mac-popover-call.png",
+      "source": "popover-call.png",
+      "sourceSha256": "d969d95e4bd9bf89e9e70b3acfb3366d25345442f93fdaa088682c4c0996084b",
+      "crop": [
+        50,
+        505,
+        640,
+        215
+      ],
+      "width": 640,
+      "height": 215,
+      "sha256": "6e838df165878c996bb4f43038638c4ecab560c7c3ac490a10ef6b6bb4819b4b",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), popover-call.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls. Pixel crop x,y,width,height=50,505,640,215."
+    },
+    {
+      "file": "mac-speakers.png",
+      "source": "review-transcript.png",
+      "sourceSha256": "2b7cf0bfc56a25b9f6d9818a0fb6e49e898bbb29302fbc6f12cee3ce8fb90d61",
+      "crop": null,
+      "width": 2800,
+      "height": 1720,
+      "sha256": "2b7cf0bfc56a25b9f6d9818a0fb6e49e898bbb29302fbc6f12cee3ce8fb90d61",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), review-transcript.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    },
+    {
+      "file": "mac-speakers-detail.png",
+      "source": "review-transcript.png",
+      "sourceSha256": "2b7cf0bfc56a25b9f6d9818a0fb6e49e898bbb29302fbc6f12cee3ce8fb90d61",
+      "crop": [
+        497,
+        560,
+        1659,
+        910
+      ],
+      "width": 1659,
+      "height": 910,
+      "sha256": "8bbd43184d9ca7dc37193cac66763ed6adc5e3c68847eb7b932f01ee50561f56",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), review-transcript.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls. Pixel crop x,y,width,height=497,560,1659,910."
+    },
+    {
+      "file": "mac-people.png",
+      "source": "people-review.png",
+      "sourceSha256": "b4facaf9b02a3b338a9696f168cbc124e8022a5e6c1137531c7c1351c7ab9b39",
+      "crop": null,
+      "width": 2800,
+      "height": 1718,
+      "sha256": "b4facaf9b02a3b338a9696f168cbc124e8022a5e6c1137531c7c1351c7ab9b39",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), people-review.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    },
+    {
+      "file": "mac-person-detail.png",
+      "source": "people-review.png",
+      "sourceSha256": "b4facaf9b02a3b338a9696f168cbc124e8022a5e6c1137531c7c1351c7ab9b39",
+      "crop": [
+        1120,
+        420,
+        1638,
+        800
+      ],
+      "width": 1638,
+      "height": 800,
+      "sha256": "7ba864074592ae72037316ba3efc4cec4d8fe3269f6b3ee5d87f54ae4cf227da",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), people-review.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls. Pixel crop x,y,width,height=1120,420,1638,800."
+    },
+    {
+      "file": "mac-review-summary.png",
+      "source": "review-report.png",
+      "sourceSha256": "6b26d03e1262b4062241e23f1b885b65c734487e2116e540dd24fb8a1d79e916",
+      "crop": null,
+      "width": 2800,
+      "height": 1720,
+      "sha256": "6b26d03e1262b4062241e23f1b885b65c734487e2116e540dd24fb8a1d79e916",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), review-report.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    },
+    {
+      "file": "mac-review-actions.png",
+      "source": "approved-record.png",
+      "sourceSha256": "3459b3baeee601b0cf9faf43cda21fec5133d680fbb708450d923d6d50c31395",
+      "crop": null,
+      "width": 2800,
+      "height": 1718,
+      "sha256": "3459b3baeee601b0cf9faf43cda21fec5133d680fbb708450d923d6d50c31395",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), approved-record.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    },
+    {
+      "file": "mac-actions.png",
+      "source": "actions-mine.png",
+      "sourceSha256": "474b814ad93014f6d4be03be542a5a73b91b94a05e658002a71720401b996f76",
+      "crop": null,
+      "width": 2800,
+      "height": 1718,
+      "sha256": "474b814ad93014f6d4be03be542a5a73b91b94a05e658002a71720401b996f76",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), actions-mine.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    },
+    {
+      "file": "mac-speak.png",
+      "source": "settings-speak.png",
+      "sourceSha256": "07f0872d6775f2109bf3fde0f6f1bb76f89d16e087178a427924ca95e8b3d761",
+      "crop": null,
+      "width": 2800,
+      "height": 1718,
+      "sha256": "07f0872d6775f2109bf3fde0f6f1bb76f89d16e087178a427924ca95e8b3d761",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), settings-speak.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    },
+    {
+      "file": "mac-speak-detail.png",
+      "source": "speak-history-panel.png",
+      "sourceSha256": "ccf41fe68f813e3c8aae5c5f4659e63034dfc6d09fac6207674a69046e64748f",
+      "crop": null,
+      "width": 1120,
+      "height": 960,
+      "sha256": "ccf41fe68f813e3c8aae5c5f4659e63034dfc6d09fac6207674a69046e64748f",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), speak-history-panel.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    },
+    {
+      "file": "mac-speak-pill.png",
+      "source": "speak-capsule-listening.png",
+      "sourceSha256": "e4d8bf494119eb7e884babf81ec09da3e9207603671938b075f74d4450c30ee1",
+      "crop": null,
+      "width": 440,
+      "height": 72,
+      "sha256": "e4d8bf494119eb7e884babf81ec09da3e9207603671938b075f74d4450c30ee1",
+      "origin": "Origin: actual Brain for Mac SwiftUI capture, source cf3b1ba3 (Brain 0.2.59), speak-capsule-listening.png. Seeded sample content, not evidence of a live call, transcription or dictation. No redraw, recolor, text replacement, or fabricated controls."
+    }
+  ]
+}

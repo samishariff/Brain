@@ -248,7 +248,11 @@ Compact, readable actions with clear color changes. The homepage primary uses bl
 
 ### Platform choice
 
-A real website segmented control, not an app mockup. The homepage track uses the pale wash with a muted border and (4px) inset. Choices use (14px) text and a (38px) minimum height; selected choices are white with ink text and modest shadow. Base reading-page choices use (40px) minimum height and larger type. Selection is exposed through `aria-pressed`; platform preference persists when storage is available. Platform choice does not relabel Windows imagery as Mac.
+A real website segmented control, not an app mockup. The homepage track uses the pale wash with a muted border and (4px) inset. Choices use (14px) text and a (38px) minimum height; selected choices are white with ink text and modest shadow. Base reading-page choices use (40px) minimum height and larger type. Selection is exposed through `aria-pressed`; platform preference persists when storage is available. The choice switches the whole product story, never a label: Mac visitors see Mac captures and Mac copy, Windows visitors see Windows captures and Windows copy.
+
+### Platform-paired imagery
+
+Every showcase block carries both platforms in the markup as sibling `[data-for="mac"]` and `[data-for="windows"]` wrappers. The wrappers are `display: contents`, so grids keep their children as items; once the page's `js` class is set, the unselected wrapper is hidden, and because every paired image is lazy-loaded the hidden platform is never downloaded. Without JavaScript both stories stay readable. Shared controls (workspace focus, meeting steps, saved-review choices, Speak focus) write their state to both panels and pixels only to the visible one. The Mac hero keeps a (2800/1718) ratio and the Windows hero (2756/1842).
 
 ### Image inspection controls
 
