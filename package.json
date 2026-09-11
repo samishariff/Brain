@@ -1,0 +1,15 @@
+{
+  "name": "brain-website-prototype",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "node tools/preview.mjs",
+    "test": "node tools/review.mjs",
+    "test:rollback": "node tools/release.mjs rehearse",
+    "bundle": "node tools/release.mjs bundle"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "playwright": "1.63.0"
+  }
+}

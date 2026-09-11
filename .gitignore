@@ -16,3 +16,7 @@ calendar-owner.json
 *.db
 *.wav
 *.rf64
+
+# Local prototype tools and review evidence.
+node_modules/
+artifacts/
