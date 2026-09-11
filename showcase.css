@@ -86,11 +86,12 @@
 .native-figure figcaption .icon { width:16px; height:16px; }
 .demo-scene .native-figure img { max-height:510px; object-fit:contain; }
 .memory-section { display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:80px; }
-.memory-composition { position:relative; padding:28px 64px 150px 28px; min-width:0; background:#e7f0ed; border-radius:24px; }
+.memory-composition { padding:28px; min-width:0; background:#e7f0ed; border-radius:24px; }
 .memory-main img { aspect-ratio:auto; }
-.memory-detail { width:52%; position:absolute; right:18px; bottom:20px; margin:0; }
+.memory-detail { width:60%; max-width:320px; margin:24px 0 0 auto; }
 .memory-detail img { width:100%; border-radius:8px; box-shadow:0 18px 30px -16px #17392e77; }
 .memory-detail figcaption { font-size:12px; line-height:1.65; color:var(--muted); margin-top:10px; }
+.memory-detail figcaption .icon { width:14px; height:14px; vertical-align:middle; }
 .feature-copy h2 { margin-bottom:24px; }
 .feature-copy p { font-size:18px; line-height:1.75; color:var(--muted); }
 .feature-copy p+p { margin-top:18px; }
@@ -183,8 +184,7 @@
   .demo-scene, .memory-section, .agents-layout, .speak-section { grid-template-columns:1fr; gap:40px; }
   .scene-copy { max-width:560px; }
   .memory-section .feature-copy { grid-row:1; }
-  .memory-composition { max-width:620px; padding-bottom:160px; }
-  .memory-detail { width:44%; }
+  .memory-composition { max-width:620px; }
   .outcomes-section>.wrap { grid-template-columns:1fr; gap:32px; }
   .outcomes-section .section-heading { grid-row:auto; }
   .outcome-controls, .outcome-links, .agent-boundary { grid-column:auto; }
@@ -232,8 +232,8 @@
   .scene-copy p { font-size:16px; }
   .native-showcase .fine-print { font-size:13px; }
   .scene-copy>a, .feature-copy .text-link { font-size:14px; }
-  .memory-composition { padding:18px 32px 150px 18px; border-radius:16px; }
-  .memory-detail { width:66%; right:12px; bottom:18px; }
+  .memory-composition { padding:18px; border-radius:16px; }
+  .memory-detail { width:78%; }
   .outcome-frame { padding:10px; }
   .outcome-controls { gap:8px; }
   .outcome-controls button { padding:8px 10px; font-size:12px; }

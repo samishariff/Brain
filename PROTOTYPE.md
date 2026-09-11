@@ -25,6 +25,46 @@ Keep the PR in draft and do not merge, enable auto-merge, or deploy until:
 A feature-branch push backs up the work. GitHub Pages currently publishes only
 `main` at the repository root, so this draft PR does not update the public site.
 
+## Speaker screenshot refresh
+
+The speaker-diarization scene now shows the saved transcript's distinct voice
+turns and playback controls. The voice-memory section shows the revised People
+sample and Assign person / This is me / Skip controls. Both use fresh native
+captures of the interface merged in
+[Windows PR #114](https://github.com/samishariff/Brain-Windows/pull/114), with
+seeded demonstration content. These development images do not establish that
+the revised UI is in the downloadable installer or that real speech was tested.
+
+`tools/native-captures.json` keeps the original source/date defaults for older
+images. Refreshed assets have their own `sourceCommit` and `capturedUtc`, as well
+as original-image hashes and exact pixel crops. `screenshots.html` links the full
+saved transcript and People captures. Source pixels are never repainted.
+
+The isolated capture receipt, fixture-only overlay, build log and original PNGs
+are retained locally in `artifacts/native-speaker-refresh/`. To import those
+captures again, run `tools/Import-SpeakerCaptures.ps1`; the committed
+`tools/speaker-capture-crops.json` defines the crops. If regenerating all older
+assets with `tools/Import-NativeCaptures.ps1`, run the speaker importer afterward
+to apply the refresh without changing the older images' provenance.
+
+The previous browser evidence is preserved in
+`artifacts/review-before-speaker-refresh/`. The current `npm test` review writes
+`artifacts/review/`; additional selected-speaker and People section captures at
+1440, 768, 390 and 320 pixels are in `artifacts/speaker-refresh-browser-final/`.
+These section captures use taller viewports to frame the complete section below
+the sticky header; the ordinary browser suite also checks standard screen sizes.
+The initial screenshot framing artifacts are retained in
+`artifacts/speaker-refresh-browser/`.
+
+Final native capture build/run passed. `npm test` passed all 14 browser test
+groups plus its crawled-route receipt, with zero findings and 23 screenshots.
+Independent review verified all four refreshed assets against original decoded
+native pixels/crops, preserved all eight older assets and their receipts, and
+cleared all eight final speaker/People section captures. No app inference,
+native Mac capture, distribution staging or publication was performed for this
+focused screenshot update.
+The publication and Mac-capture hold above still applies.
+
 ## Review it
 
 With Node.js 22 or later installed, run from this directory:

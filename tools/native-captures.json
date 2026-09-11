@@ -70,31 +70,6 @@
                       "origin":  "Origin: actual Brain Windows WinUI capture, source 7dd614a9e383ba4a565b6755fe41dd753b4b93d8, meeting-detection-Dark.png. Sample UI state, not real call or inference evidence. No redraw, recolor, text replacement, or fabricated controls."
                   },
                   {
-                      "file":  "windows-people.png",
-                      "source":  "interface-people-assessed-wide.png",
-                      "sourceSha256":  "721cc962d679f2112fea9543672035256b76355266cf5c66ba65b8a41fbf7c90",
-                      "crop":  null,
-                      "width":  2756,
-                      "height":  1822,
-                      "sha256":  "017eab78da21208d594862aa324f5e220b8e6275c4da356891320625a206209b",
-                      "origin":  "Origin: actual Brain Windows WinUI capture, source 7dd614a9e383ba4a565b6755fe41dd753b4b93d8, interface-people-assessed-wide.png. Sample UI state, not real call or inference evidence. No redraw, recolor, text replacement, or fabricated controls."
-                  },
-                  {
-                      "file":  "windows-person-detail.png",
-                      "source":  "interface-people-assessed-wide.png",
-                      "sourceSha256":  "721cc962d679f2112fea9543672035256b76355266cf5c66ba65b8a41fbf7c90",
-                      "crop":  [
-                                   1832,
-                                   607,
-                                   842,
-                                   1165
-                               ],
-                      "width":  842,
-                      "height":  1165,
-                      "sha256":  "ca2ed0dba4c1024422e907db99943b9eb2813e6af892adcda149208a2bee75c5",
-                      "origin":  "Origin: actual Brain Windows WinUI capture, source 7dd614a9e383ba4a565b6755fe41dd753b4b93d8, interface-people-assessed-wide.png. Sample UI state, not real call or inference evidence. No redraw, recolor, text replacement, or fabricated controls. Pixel crop x,y,width,height=1832,607,842,1165."
-                  },
-                  {
                       "file":  "windows-speak.png",
                       "source":  "speak-Dark-wide.png",
                       "sourceSha256":  "c248efdfe9cde57d0ed0877987089c63fbd5b28ef49a441c62ea46561e307c40",
@@ -128,6 +103,65 @@
                       "height":  66,
                       "sha256":  "a20b9330515fa3b2b2a4c85075e2f055779b990eb0815698ecf3eb386ad504b9",
                       "origin":  "Origin: actual Brain Windows WinUI capture, source 7dd614a9e383ba4a565b6755fe41dd753b4b93d8, speak-listening-pill.png. Sample UI state, not real call or inference evidence. No redraw, recolor, text replacement, or fabricated controls."
+                  },
+                  {
+                      "file":  "windows-speakers.png",
+                      "source":  "saved-speakers-Dark-readable.png",
+                      "sourceSha256":  "a29d867e0f5dfc2ec4247a7e481638dd5ec7f8f86a51640831911ad41463a9f4",
+                      "crop":  null,
+                      "width":  2054,
+                      "height":  1722,
+                      "sha256":  "4651c6ec3d888fd22d7158bb535a43d5cd3c23f1946adbc8d2ce7ef4f6a69f43",
+                      "sourceCommit":  "cdc43d2657090325c92df5c74523c33e6162ff95",
+                      "capturedUtc":  "2026-09-11T05:47:32.1970639Z",
+                      "origin":  "Origin: actual Brain Windows WinUI capture, source cdc43d2657090325c92df5c74523c33e6162ff95, saved-speakers-Dark-readable.png. Seeded sample content, not real call or inference evidence. No redraw, recolor, text replacement, or fabricated controls."
+                  },
+                  {
+                      "file":  "windows-speakers-detail.png",
+                      "source":  "saved-speakers-Dark-readable.png",
+                      "sourceSha256":  "a29d867e0f5dfc2ec4247a7e481638dd5ec7f8f86a51640831911ad41463a9f4",
+                      "crop":  [
+                                   476,
+                                   384,
+                                   1500,
+                                   976
+                               ],
+                      "width":  1500,
+                      "height":  976,
+                      "sha256":  "31d66d374f91f048805263e0967f4f6706c4d1da16be0c0de3fbfaced927e59b",
+                      "sourceCommit":  "cdc43d2657090325c92df5c74523c33e6162ff95",
+                      "capturedUtc":  "2026-09-11T05:47:32.1970639Z",
+                      "origin":  "Origin: actual Brain Windows WinUI capture, source cdc43d2657090325c92df5c74523c33e6162ff95, saved-speakers-Dark-readable.png. Seeded sample content, not real call or inference evidence. No redraw, recolor, text replacement, or fabricated controls. Pixel crop x,y,width,height=476,384,1500,976."
+                  },
+                  {
+                      "file":  "windows-people.png",
+                      "source":  "people-speakers-Dark-wide.png",
+                      "sourceSha256":  "6ed9787b816fb43481c6a4359c0db29b3ec38b95d145951f241fc864f90f7759",
+                      "crop":  null,
+                      "width":  2854,
+                      "height":  1922,
+                      "sha256":  "d3c5078298d7c9b79204a9944fec53c4d1249705937a8a81190f18aa86966ba0",
+                      "sourceCommit":  "cdc43d2657090325c92df5c74523c33e6162ff95",
+                      "capturedUtc":  "2026-09-11T05:47:32.1970639Z",
+                      "origin":  "Origin: actual Brain Windows WinUI capture, source cdc43d2657090325c92df5c74523c33e6162ff95, people-speakers-Dark-wide.png. Seeded sample content, not real call or inference evidence. No redraw, recolor, text replacement, or fabricated controls."
+                  },
+                  {
+                      "file":  "windows-person-detail.png",
+                      "source":  "people-speakers-Dark-wide.png",
+                      "sourceSha256":  "6ed9787b816fb43481c6a4359c0db29b3ec38b95d145951f241fc864f90f7759",
+                      "crop":  [
+                                   1770,
+                                   560,
+                                   1002,
+                                   862
+                               ],
+                      "width":  1002,
+                      "height":  862,
+                      "sha256":  "e8ac03da01e5b17b24cbb8c82f15eab1a83bb4dba7fb9deca66f82ec209f3a07",
+                      "sourceCommit":  "cdc43d2657090325c92df5c74523c33e6162ff95",
+                      "capturedUtc":  "2026-09-11T05:47:32.1970639Z",
+                      "origin":  "Origin: actual Brain Windows WinUI capture, source cdc43d2657090325c92df5c74523c33e6162ff95, people-speakers-Dark-wide.png. Seeded sample content, not real call or inference evidence. No redraw, recolor, text replacement, or fabricated controls. Pixel crop x,y,width,height=1770,560,1002,862."
                   }
-              ]
+              ],
+    "sourcePolicy":  "Per-file sourceCommit and capturedUtc override the original manifest defaults for refreshed captures."
 }
