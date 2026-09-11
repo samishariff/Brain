@@ -93,7 +93,10 @@
 .native-figure figcaption { font-size:12px; line-height:1.7; margin-top:16px; color:var(--muted); gap:12px; }
 .native-figure figcaption .icon { width:16px; height:16px; }
 .demo-scene .native-figure img { max-height:510px; object-fit:contain; }
-.demo-scene .popover-figure img { max-width:320px; margin-inline:auto; }
+.demo-scene .popover-figure { max-width:360px; margin-inline:auto; }
+.demo-scene .popover-figure figcaption { flex-wrap:wrap; }
+.evidence-grid .popover-figure img { max-width:320px; }
+#main { scroll-margin-top:96px; }
 .memory-section { display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:80px; }
 .memory-composition { padding:28px; min-width:0; background:#e7f0ed; border-radius:24px; }
 .memory-main img { aspect-ratio:auto; }

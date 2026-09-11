@@ -206,13 +206,22 @@ try {
     await page.locator('[data-outcome="chat"]').click();
     await settled(page);
   });
-  await check('Copy command and clipboard fallback', async () => {
-    await page.locator('[data-copy="search-command"]').click();
-    assert.equal(await page.evaluate(() => navigator.clipboard.readText()), 'brain search "release decision" --scope Personal --json');
+  await check('Copy command and clipboard fallback, per platform', async () => {
+    const commands = { mac: 'brain search "release decision" --scope Personal --json', windows: '.\\brain.cmd search "release decision" --scope Personal --json' };
+    for (const platform of ['mac', 'windows']) {
+      await choose(page, platform);
+      const button = page.locator(`[data-copy="search-command-${platform}"]`);
+      assert.equal(await page.locator(`[data-copy="search-command-${platform === 'mac' ? 'windows' : 'mac'}"]`).isVisible(), false, 'the other platform\'s command sheet is hidden');
+      await button.click();
+      assert.equal(await page.evaluate(() => navigator.clipboard.readText()), commands[platform]);
+      assert.equal(await button.textContent(), 'Copied');
+      await page.waitForFunction(selector => document.querySelector(selector).textContent === 'Copy', `[data-copy="search-command-${platform}"]`, { timeout: 5000 });
+    }
     await page.evaluate(() => { Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.reject(new Error('Disabled')) }, configurable: true }); });
-    await page.locator('[data-copy="search-command"]').click();
-    assert.equal(await page.evaluate(() => getSelection().toString()), 'brain search "release decision" --scope Personal --json');
+    await page.locator('[data-copy="search-command-windows"]').click();
+    assert.equal(await page.evaluate(() => getSelection().toString()), commands.windows);
     await page.evaluate(() => getSelection().removeAllRanges());
+    await choose(page, 'mac');
   });
   for (const platform of ['mac', 'windows']) {
     await check(`${platform}: platform selection, reload, guide navigation, and release links`, async () => {
