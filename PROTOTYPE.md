@@ -5,6 +5,26 @@ public site is `https://samishariff.github.io/Brain/`, deployed by GitHub Pages
 from the root of `samishariff/Brain`'s `main` branch. Do not merge or push to that
 branch until the owner approves the exact reviewed prototype revision.
 
+## Draft PR hold: Mac screenshots required
+
+The owner approved preserving this direction in a draft PR, not publishing it.
+Keep the PR in draft and do not merge, enable auto-merge, or deploy until:
+
+- Equivalent current native Mac captures cover meeting detection, live
+  transcription, the meeting assistant, speaker review and remembered voices,
+  saved meeting review, and Speak including its floating indicator.
+- Mac captures retain their source/version receipts and clearly label sample
+  content and staged states, following the Windows provenance standard.
+- The website presents the corresponding Mac and Windows imagery when a visitor
+  chooses a platform; review the layouts and interactions for both.
+- Reconcile any newer release/download changes on public `main`, then rerun
+  browser checks, distribution staging, and rollback rehearsal for the candidate.
+- The owner reviews and explicitly approves the complete Mac/Windows candidate
+  for publication.
+
+A feature-branch push backs up the work. GitHub Pages currently publishes only
+`main` at the repository root, so this draft PR does not update the public site.
+
 ## Review it
 
 With Node.js 22 or later installed, run from this directory:
