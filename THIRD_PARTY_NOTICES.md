@@ -11,11 +11,22 @@ model weights below. The Windows package carries these license files alongside i
   `9df3158ed228a641a4b127942d7f459f24c9e13f04682659d05c00c80099b6b5`.
 - **LLVM OpenMP**, included by that Windows runtime archive. Its upstream Apache 2.0 license
   and LLVM exception are retained verbatim as `Helpers/llama/LICENSE-LLVM-OpenMP`.
+- **Microsoft Visual C++ runtime 14.44.35211.0** (x64): `msvcp140.dll`, `vcruntime140.dll` and
+  `vcruntime140_1.dll`, which the llama.cpp runtime needs and Windows does not include. They are Microsoft's
+  unmodified files from the Visual Studio 2022 `VC\Redist\MSVC\14.44.35112\x64\Microsoft.VC143.CRT` folder,
+  carried in `Helpers/llama` as Distributable Code under Microsoft's Visual Studio license terms. Sizes, SHA-256
+  values and terms are in [NOTICE-Microsoft.VC143.CRT-14.44.35211.txt](licenses/NOTICE-Microsoft.VC143.CRT-14.44.35211.txt).
 - **Gemma 4 E4B IT**, by Google, optionally downloaded as the Unsloth Q4_K_M quantization at
   revision `bfc15c382204943c3a8fff0c750b94ae2364d7a3`. Google declares Apache 2.0 at
   [Gemma 4 license](https://ai.google.dev/gemma/docs/gemma_4_license); the license text is
   included in [LICENSE-Gemma4](licenses/LICENSE-Gemma4). The 4,977,171,584-byte file is
   verified against SHA-256 `85a896a047553e842f25297ee5b031d64ff30147d9c4af17b1e4b394cd1fab87`.
+- **Gemma 4 E2B IT**, by Google, Brain's smaller private AI for PCs with less than 16 GB of memory, optionally
+  downloaded as the Unsloth Q4_K_M quantization (`unsloth/gemma-4-E2B-it-GGUF`) at revision
+  `0314792d7f1f7e229411f620751375812bb9faf2`. Google declares Apache 2.0 at
+  [Gemma 4 license](https://ai.google.dev/gemma/docs/gemma_4_license); the license text is the same
+  [LICENSE-Gemma4](licenses/LICENSE-Gemma4) Apache 2.0 text as for Gemma 4 E4B. The 3,106,738,272-byte file is
+  verified against SHA-256 `740185b21d22ceb83a11c3aa62ad5842ef32c70f6096d756bbee85a1e4ec34b8`.
 - **Qwen3-4B-Instruct-2507**, retained for existing installations, by the Qwen team at Alibaba Cloud, previously downloaded as the
   `unsloth/Qwen3-4B-Instruct-2507-GGUF` Q4_K_M quantization. Licensed under Apache 2.0;
   see [LICENSE-Qwen3](licenses/LICENSE-Qwen3). The weight size and SHA-256 are pinned in
@@ -51,8 +62,10 @@ The source checkpoint SHA256 is
 Brain's adaptation adds the checkpoint's waveform preprocessing and normalized
 speaker-vector output to a standard ONNX graph; it does not retrain the model.
 Its time masks use dynamic ONNX ranges to preserve NeMo's behavior on longer inputs.
-The bundled file `assets/speech/titanet-waveform-v1.onnx` is 88,736,171 bytes,
+The file `titanet-waveform-v1.onnx` is 88,736,171 bytes,
 SHA256 `65662b312748d4e083fddb2b7a5223cde0a0eec453ca8de8bf1dfb992ee1f07e`.
+From 1.0.6 the app package does not carry it: speech setup downloads these exact
+bytes from Brain's release assets and verifies the size and SHA256 before use.
 The official source model card and complete license are linked above. This notice
 identifies Brain's adaptation and preserves the original authors' attribution
 and license.
