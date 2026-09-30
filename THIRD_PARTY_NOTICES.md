@@ -45,6 +45,33 @@ The legacy Qwen GGUF repository declares `apache-2.0` at revision
 Brain does not change the terms of these components. Other installed speech packs and application
 dependencies retain their own licenses and notices.
 
+## Optional multispeaker speech tools in the 1.0.8 candidate
+
+The optional English live speaker preview uses Brain's CPU streaming adaptation of
+`handy-computer/transcribe.cpp` at commit
+`83a75c1f9992f3cdef503999c47eaa18f5b6c679`. The separate saved-transcription
+candidate uses the same upstream source with Brain's JSON word-export patch;
+saved multitalker activation remains disabled. The live preview is off by default.
+
+The bundled `brain-multitalker-live-cpu-v1.zip` and
+`brain-multitalker-cpu-v1.zip` retain the full transcribe.cpp and ggml MIT license
+texts as `LICENSE-transcribe.txt` and `LICENSE-ggml.txt` under their respective
+`multitalker-live` and `multitalker-cpu` directories. The live runtime includes
+Brain's streaming modifications; the saved runtime does not include those changes.
+Their unmodified Microsoft Visual C++ 14.44.35211.0 redistributables use the
+existing [Microsoft notice](licenses/NOTICE-Microsoft.VC143.CRT-14.44.35211.txt).
+
+The model downloads separately when the optional preview is installed. It is the
+handy-computer Q8 GGUF export of NVIDIA's
+`multitalker-parakeet-streaming-0.6b-v1`, revision
+`a9a7208d8f205b5816770a6f7fb83afc81a7691b`, file
+`bundle/multitalker-parakeet-streaming-0.6b-v1-Q8_0.gguf`.
+The [pinned model card](https://huggingface.co/handy-computer/multitalker-parakeet-streaming-0.6b-v1-gguf/blob/a9a7208d8f205b5816770a6f7fb83afc81a7691b/README.md)
+identifies the [NVIDIA Open Model License](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/).
+The 873,443,456-byte model must match SHA-256
+`cf83cedc6777d2528a4d2a8a4bf476174ef7e5c65b86bc6c955f4cc9f5951ac5`.
+Both runtime archives retain this attribution in `MODEL-NOTICE.txt`.
+
 ## NVIDIA TitaNet speaker model
 
 Brain includes a waveform-input ONNX adaptation of **NVIDIA TitaNet large**,
